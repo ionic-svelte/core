@@ -39,7 +39,7 @@ if sys.argv[1] == "--init":
     except:
         os.system("clear")
 
-    os.system("npm run help")
+    os.system("python cli_tool.py --help")
     
 # Runs your app in the browser
 # add --build for Production
