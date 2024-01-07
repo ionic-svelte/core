@@ -1,7 +1,7 @@
 <script>
   // @ts-nocheck
+  import { navigating, page } from "$app/stores";
   import { onMount } from "svelte";
-  import { page, navigating } from "$app/stores";
 
   import { goto } from "$app/navigation";
 
@@ -29,7 +29,7 @@
     tabs.forEach(async (tab) => {
       if ($navigating.to.url.pathname.includes(relativePath + tab.tab)) {
         currentTabName = tab.tab;
-        await goto(relativePath + tab.tab);
+        await goto($navigating.to.url.pathname);
         controller.select(tab.tab);
       }
     });
