@@ -1,13 +1,12 @@
 // Types
 import { create } from 'create-svelte';
-import process from 'process';
-import { spawnSync } from 'node:child_process';
 import fs from 'fs-extra';
-import path from 'path';
-import { dist, whichPMRuns, mkdirp, getIonicVariables, getDemoIonicApp } from './utils.js';
-import { bold, red, cyan, grey } from 'kleur/colors';
-import { getTSCapacitorConfig } from './utils.js';
 import ip from 'ip';
+import { bold, grey, red } from 'kleur/colors';
+import { spawnSync } from 'node:child_process';
+import path from 'path';
+import process from 'process';
+import { getDemoIonicApp, getIonicVariables, getTSCapacitorConfig, mkdirp, whichPMRuns } from './utils.js';
 
 // NOTE: Any changes here must also be reflected in the --help output in utils.ts and shortcut expansions in bin.ts.
 // Probably a good idea to do a search on the values you are changing to catch any other areas they are used in
@@ -83,7 +82,7 @@ export async function createIonicSvelte(opts) {
 	// the order matters due to dependency resolution, because yarn
 	let packages = [
 		'svelte-preprocess',
-		'@sveltejs/adapter-static',
+		'@sveltejs/adapter-static@1.0.1',
 		'vite@4'
 	];
 	if (opts?.capacitor) packages.push('@capacitor/cli');

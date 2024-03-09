@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-import { IonicSvelteOptions, createIonicSvelte } from './creator.js';
 import fs from 'fs-extra';
+import { bold, cyan, gray, green, grey, red } from 'kleur/colors';
 import mri from 'mri';
 import prompts from 'prompts';
-import { bold, cyan, gray, grey, red, green } from 'kleur/colors';
+import { IonicSvelteOptions, createIonicSvelte } from './creator.js';
 import { dist, getHelpText } from './utils.js';
-import path from 'path';
 
 /* Ionic Svelte Create NPM script
 
@@ -89,7 +88,7 @@ async function main() {
 
 		if (options.ionicons) {
 			console.log(bold('✔ Ionicons'));
-			console.log(cyan('  https://ionicsvelte.firebaseapp.com/components/Icon'));
+			console.log(cyan('  https://ionic-svelte.firebaseapp.com/components/Icon'));
 		}
 
 		console.log('\nInstall community-maintained integrations:');

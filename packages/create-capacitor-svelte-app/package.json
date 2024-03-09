@@ -1,6 +1,6 @@
 {
   "name": "create-capacitor-svelte-app",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Use this CLI app to setup a new Capacitor application in a new SvelteKit project.",
   "keywords": [
     "capacitor",
@@ -9,7 +9,7 @@
     "sveltekit",
     "svelte-kit"
   ],
-  "homepage": "https://ionicsvelte.firebaseapp.com",
+  "homepage": "https://ionic-svelte.firebaseapp.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tommertom/svelte-ionic-npm",

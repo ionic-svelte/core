@@ -2,7 +2,7 @@
 	"name": "IonicSvelteKit",
 	"version": "0.0.1",
 	"private": true,
-	"homepage": "https://ionicsvelte.firebaseapp.com",
+	"homepage": "https://ionic-svelte.firebaseapp.com",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Tommertom/svelte-ionic-npm.git"

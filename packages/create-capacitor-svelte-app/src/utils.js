@@ -1,6 +1,6 @@
-import { fileURLToPath } from 'url';
+import fs from 'fs';
 import path from 'path';
-import fs from 'fs'
+import { fileURLToPath } from 'url';
 
 export function whichPMRuns() {
   const userAgent = process.env.npm_config_user_agent;
@@ -476,7 +476,7 @@ export function getDemoIonicApp() {
 
 	<ion-item>
 		<ion-label>Visit Ionic Showcase app with sourceviewer</ion-label>
-		<ion-button href="https://ionicsvelte.firebaseapp.com/" target="_new" fill="outline" slot="end"
+		<ion-button href="https://ionic-svelte.firebaseapp.com/" target="_new" fill="outline" slot="end"
 			>View</ion-button
 		>
 	</ion-item>

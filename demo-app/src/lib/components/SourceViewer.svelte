@@ -168,7 +168,7 @@
 		setTimeout(closeOverlay, 1000);
 	};
 
-	const languageChange = (event) => {
+	const languageChange = (event: { detail: any }) => {
 		selectedCodeLanguage = event.detail.value;
 		sourceCode = sources[selectedCodeLanguage];
 		localForage.setItem(LASTLANGSELECTEDKEY, selectedCodeLanguage);
@@ -193,7 +193,7 @@
 			{#if REPLlink}
 				<ion-button
 					on:click={() => {
-						if (REPLlink.length > 1) {
+						if (REPLlink && REPLlink.length > 1) {
 							window.open(REPLlink, '_blank');
 						}
 					}}>

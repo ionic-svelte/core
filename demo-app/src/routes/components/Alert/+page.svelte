@@ -1,16 +1,17 @@
 <script lang="ts">
+	import type { AlertOptions } from '@ionic/core';
 	import { alertController } from 'ionic-svelte';
 
 	import SourceButton from '$lib/components/SourceButton.svelte';
 	import { IonPage } from 'ionic-svelte';
 
-	const showAlert = async (options) => {
+	const showAlert = async (options: AlertOptions) => {
 		const alert = await alertController.create(options);
 		alert.present();
 	};
 
 	const showInputAlert = async () => {
-		const options = {
+		const options: AlertOptions = {
 			cssClass: 'my-custom-class',
 			header: 'Prompt!',
 			inputs: [
@@ -146,7 +147,7 @@
 			]
 		};
 
-		return showAlert(options);
+		return showAlert(options as AlertOptions);
 	};
 
 	const showCheckboxAlert = async () => {
@@ -205,7 +206,7 @@
 			]
 		};
 
-		return showAlert(options);
+		return showAlert(options as AlertOptions);
 	};
 </script>
 
