@@ -5,6 +5,7 @@
 // using https://unpkg.com/@ionic/docs@6.6.0/core.json
 // using https://unpkg.com/@ionic/docs@7.0.2/core.json
 // using https://unpkg.com/@ionic/docs@7.0.3/core.json
+// using https://unpkg.com/@ionic/docs@8.2.2/core.json
 
 const fs = require("fs");
 const https = require('https');

@@ -3,7 +3,6 @@
 
 /* eslint-disable */
 /* tslint:disable */
-import type { HTMLAttributes } from "svelte/elements";
 import type {
   AccordionGroupChangeEventDetail,
   ActionSheetButton,
@@ -13,8 +12,11 @@ import type {
   CheckboxChangeEventDetail,
   ComponentProps,
   DatetimeChangeEventDetail,
+  DatetimeHighlight,
   InputChangeEventDetail,
   InputInputEventDetail,
+  IonicConfig,
+  IonicSafeString,
   ItemReorderEventDetail,
   ModalBreakpointChangeEventDetail,
   NavComponent,
@@ -42,9 +44,9 @@ import type {
   TransitionDoneFn,
   ViewController,
 } from "@ionic/core";
-import type { DatetimeHighlight, IonicConfig, IonicSafeString } from "@ionic/core";
-import { SvelteComponent } from "svelte";
 import { DatetimeHighlightStyle } from "@ionic/core/dist/types/components/datetime/datetime-interface";
+import { SvelteComponent } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
 
 export function setupIonicSvelte(config?: IonicConfig);
 export function setupIonicBase(config?: IonicConfig);
@@ -56,8 +58,8 @@ export function createNavPageFromSvelte(
 
 export { default as IonTabs } from "./components/IonTabs.svelte";
 // export { default as IonTabsLegacy } from "./components/IonTabsLegacy.svelte";
-export { default as IonPage } from "./components/IonPage.svelte";
 export { default as IonNav } from "./components/IonNav.svelte";
+export { default as IonPage } from "./components/IonPage.svelte";
 
 // thank you ChatGPT!
 export const navController: {
@@ -112,13 +114,13 @@ export const navController: {
 
 // we overload (modalcontroller and popovercontroller) from ionic-core with same types, so let's mirror these
 export {
-  modalController,
-  popoverController,
   actionSheetController,
   alertController,
   loadingController,
   menuController,
+  modalController,
   pickerController,
+  popoverController,
   toastController,
 } from "@ionic/core";
 
@@ -234,7 +236,7 @@ declare global {
       value?: null | string | string[] | undefined;
 
       /**
-       * (event : AccordionGroupChangeEventDetail<any>) => void :  Emitted when the value property has changed as a result of a user action such as a click. This event will not emit when programmatically setting the value property.
+       * (event : AccordionGroupChangeEventDetail<any>) => void :  Emitted when the value property has changed as a result of a user action such as a click.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<AccordionGroupChangeEventDetail<any>> & {
@@ -1082,6 +1084,12 @@ declare global {
 
     interface IonCheckbox {
       /**
+       * How to control the alignment of the checkbox and label on the cross axis. `"start"`: The label and control will appear on the left of the cross axis in LTR, and on the right side in RTL. `"center"`: The label and control will appear at the center of the cross axis in both LTR and RTL.
+       * API info: https://ionicframework.com/docs/api/checkbox#alignment
+       */
+      alignment?: "center" | "start";
+
+      /**
        * If `true`, the checkbox is selected.
        * API info: https://ionicframework.com/docs/api/checkbox#checked
        */
@@ -1123,16 +1131,10 @@ declare global {
       justify?: "end" | "space-between" | "start";
 
       /**
-       * Where to place the label relative to the checkbox. `"start"`: The label will appear to the left of the checkbox in LTR and to the right in RTL. `"end"`: The label will appear to the right of the checkbox in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("...").
+       * Where to place the label relative to the checkbox. `"start"`: The label will appear to the left of the checkbox in LTR and to the right in RTL. `"end"`: The label will appear to the right of the checkbox in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("..."). `"stacked"`: The label will appear above the checkbox regardless of the direction. The alignment of the label can be controlled with the `alignment` property.
        * API info: https://ionicframework.com/docs/api/checkbox#labelplacement
        */
-      "label-placement"?: "end" | "fixed" | "start";
-
-      /**
-       * Set the `legacy` property to `true` to forcibly use the legacy form control markup. Ionic will only opt checkboxes in to the modern form markup when they are using either the `aria-label` attribute or have text in the default slot. As a result, the `legacy` property should only be used as an escape hatch when you want to avoid this automatic opt-in behavior.  Note that this property will be removed in an upcoming major release of Ionic, and all form components will be opted-in to using the modern form markup.
-       * API info: https://ionicframework.com/docs/api/checkbox#legacy
-       */
-      legacy?: boolean | undefined;
+      "label-placement"?: "end" | "fixed" | "stacked" | "start";
 
       /**
        * The mode determines which platform styles to use.
@@ -1158,7 +1160,7 @@ declare global {
       "on:ionBlur"?: () => void;
 
       /**
-       * (event : CheckboxChangeEventDetail<any>) => void :  Emitted when the checked property has changed as a result of a user action such as a click. This event will not emit when programmatically setting the checked property.
+       * (event : CheckboxChangeEventDetail<any>) => void :  Emitted when the checked property has changed as a result of a user action such as a click.  This event will not emit when programmatically setting the `checked` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<CheckboxChangeEventDetail<any>> & { target: HTMLIonCheckboxElement }
@@ -1372,6 +1374,12 @@ declare global {
         | undefined;
 
       /**
+       * Controls where the fixed content is placed relative to the main content in the DOM. This can be used to control the order in which fixed elements receive keyboard focus. For example, if a FAB in the fixed slot should receive keyboard focus before the main page content, set this property to `'before'`.
+       * API info: https://ionicframework.com/docs/api/content#fixedslotplacement
+       */
+      "fixed-slot-placement"?: "after" | "before";
+
+      /**
        * If `true` and the content does not cause an overflow scroll, the scroll interaction will cause a bounce. If the content exceeds the bounds of ionContent, nothing will change. Note, this does not disable the system bounce on iOS. That is an OS level setting.
        * API info: https://ionicframework.com/docs/api/content#forceoverscroll
        */
@@ -1478,6 +1486,15 @@ declare global {
       "first-day-of-week"?: number;
 
       /**
+       * Formatting options for dates and times. Should include a 'date' and/or 'time' object, each of which is of type [Intl.DateTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options).
+       * API info: https://ionicframework.com/docs/api/datetime#formatoptions
+       */
+      "format-options"?:
+        | undefined
+        | { date: DateTimeFormatOptions; time?: DateTimeFormatOptions | undefined }
+        | { date?: DateTimeFormatOptions | undefined; time: DateTimeFormatOptions };
+
+      /**
        * Used to apply custom text and background colors to specific dates.  Can be either an array of objects containing ISO strings and colors, or a callback that receives an ISO string and returns the colors.  Only applies to the `date`, `date-time`, and `time-date` presentations, with `preferWheel="false"`.
        * API info: https://ionicframework.com/docs/api/datetime#highlighteddates
        */
@@ -1490,7 +1507,7 @@ declare global {
        * The hour cycle of the `ion-datetime`. If no value is set, this is specified by the current locale.
        * API info: https://ionicframework.com/docs/api/datetime#hourcycle
        */
-      "hour-cycle"?: "h12" | "h23" | undefined;
+      "hour-cycle"?: "h11" | "h12" | "h23" | "h24" | undefined;
 
       /**
        * Values used to create the list of selectable hours. By default the hour values range from `0` to `23` for 24-hour, or `1` to `12` for 12-hour. However, to control exactly which hours to display, the `hourValues` input can take a number, an array of numbers, or a string of comma separated numbers.
@@ -1565,7 +1582,7 @@ declare global {
       presentation?: "date" | "date-time" | "month" | "month-year" | "time" | "time-date" | "year";
 
       /**
-       * If `true`, the datetime appears normal but is not interactive.
+       * If `true`, the datetime appears normal but the selected date cannot be changed.
        * API info: https://ionicframework.com/docs/api/datetime#readonly
        */
       readonly?: boolean;
@@ -1601,7 +1618,7 @@ declare global {
       size?: "cover" | "fixed";
 
       /**
-       * A callback used to format the header text that shows how many dates are selected. Only used if there are 0 or more than 1 selected (i.e. unused for exactly 1). By default, the header text is set to "numberOfDates days".
+       * A callback used to format the header text that shows how many dates are selected. Only used if there are 0 or more than 1 selected (i.e. unused for exactly 1). By default, the header text is set to "numberOfDates days".  See https://ionicframework.com/docs/troubleshooting/runtime#accessing-this if you need to access `this` from within the callback.
        * API info: https://ionicframework.com/docs/api/datetime#titleselecteddatesformatter
        */
       "title-selected-dates-formatter"?: ((selectedDates: string[]) => string) | undefined;
@@ -1629,7 +1646,7 @@ declare global {
       "on:ionCancel"?: () => void;
 
       /**
-       * (event : DatetimeChangeEventDetail) => void :  Emitted when the value (selected date) has changed.
+       * (event : DatetimeChangeEventDetail) => void :  Emitted when the value (selected date) has changed.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<DatetimeChangeEventDetail> & { target: HTMLIonDatetimeElement }
@@ -1960,12 +1977,6 @@ declare global {
 
     interface IonInput {
       /**
-       * This attribute is ignored.
-       * API info: https://ionicframework.com/docs/api/input#accept
-       */
-      accept?: string | undefined;
-
-      /**
        * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
        * API info: https://ionicframework.com/docs/api/input#autocapitalize
        */
@@ -2038,7 +2049,7 @@ declare global {
       autocorrect?: "off" | "on";
 
       /**
-       * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+       * Sets the [`autofocus` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus) on the native input element.  This may not be sufficient for the element to be focused on page load. See [managing focus](/docs/developing/managing-focus) for more information.
        * API info: https://ionicframework.com/docs/api/input#autofocus
        */
       autofocus?: boolean;
@@ -2048,6 +2059,12 @@ declare global {
        * API info: https://ionicframework.com/docs/api/input#clearinput
        */
       "clear-input"?: boolean;
+
+      /**
+       * The icon to use for the clear button. Only applies when `clearInput` is set to `true`.
+       * API info: https://ionicframework.com/docs/api/input#clearinputicon
+       */
+      "clear-input-icon"?: string | undefined;
 
       /**
        * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
@@ -2079,7 +2096,7 @@ declare global {
       counter?: boolean;
 
       /**
-       * A callback used to format the counter text. By default the counter text is set to "itemLength / maxLength".
+       * A callback used to format the counter text. By default the counter text is set to "itemLength / maxLength".  See https://ionicframework.com/docs/troubleshooting/runtime#accessing-this if you need to access `this` from within the callback.
        * API info: https://ionicframework.com/docs/api/input#counterformatter
        */
       "counter-formatter"?: ((inputLength: number, maxLength: number) => string) | undefined;
@@ -2146,12 +2163,6 @@ declare global {
        * API info: https://ionicframework.com/docs/api/input#labelplacement
        */
       "label-placement"?: "end" | "fixed" | "floating" | "stacked" | "start";
-
-      /**
-       * Set the `legacy` property to `true` to forcibly use the legacy form control markup. Ionic will only opt components in to the modern form markup when they are using either the `aria-label` attribute or the `label` property. As a result, the `legacy` property should only be used as an escape hatch when you want to avoid this automatic opt-in behavior. Note that this property will be removed in an upcoming major release of Ionic, and all form components will be opted-in to using the modern form markup.
-       * API info: https://ionicframework.com/docs/api/input#legacy
-       */
-      legacy?: boolean | undefined;
 
       /**
        * The maximum value, which must not be less than its minimum (min attribute) value.
@@ -2226,12 +2237,6 @@ declare global {
       shape?: "round" | undefined;
 
       /**
-       * The initial size of the control. This value is in pixels unless the value of the type attribute is `"text"` or `"password"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `"text"`, `"search"`, `"tel"`, `"url"`, `"email"`, or `"password"`, otherwise it is ignored.
-       * API info: https://ionicframework.com/docs/api/input#size
-       */
-      size?: number | undefined;
-
-      /**
        * If `true`, the element will have its spelling and grammar checked.
        * API info: https://ionicframework.com/docs/api/input#spellcheck
        */
@@ -2273,7 +2278,7 @@ declare global {
       "on:ionBlur"?: (event: CustomEvent<FocusEvent> & { target: HTMLIonInputElement }) => void;
 
       /**
-       * (event : InputChangeEventDetail) => void :  The `ionChange` event is fired when the user modifies the input's value. Unlike the `ionInput` event, the `ionChange` event is only fired when changes are committed, not as the user types.  Depending on the way the users interacts with the element, the `ionChange` event fires at a different moment: - When the user commits the change explicitly (e.g. by selecting a date from a date picker for `<ion-input type="date">`, pressing the "Enter" key, etc.). - When the element loses focus after its value has changed: for elements where the user's interaction is typing.
+       * (event : InputChangeEventDetail) => void :  The `ionChange` event is fired when the user modifies the input's value. Unlike the `ionInput` event, the `ionChange` event is only fired when changes are committed, not as the user types.  Depending on the way the users interacts with the element, the `ionChange` event fires at a different moment: - When the user commits the change explicitly (e.g. by selecting a date from a date picker for `<ion-input type="date">`, pressing the "Enter" key, etc.). - When the element loses focus after its value has changed: for elements where the user's interaction is typing.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<InputChangeEventDetail> & { target: HTMLIonInputElement }
@@ -2290,6 +2295,43 @@ declare global {
       "on:ionInput"?: (
         event: CustomEvent<InputInputEventDetail> & { target: HTMLIonInputElement }
       ) => void;
+    }
+
+    interface IonInputPasswordToggle {
+      /**
+       * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+       * API info: https://ionicframework.com/docs/api/input-password-toggle#color
+       */
+      color?:
+        | "danger"
+        | "dark"
+        | "light"
+        | "medium"
+        | "primary"
+        | "secondary"
+        | "success"
+        | "tertiary"
+        | "warning"
+        | (string & Record<never, never>)
+        | undefined;
+
+      /**
+       * The icon that can be used to represent hiding a password. If not set, the "eyeOff" Ionicon will be used.
+       * API info: https://ionicframework.com/docs/api/input-password-toggle#hideicon
+       */
+      "hide-icon"?: string | undefined;
+
+      /**
+       * The mode determines which platform styles to use.
+       * API info: https://ionicframework.com/docs/api/input-password-toggle#mode
+       */
+      mode?: "ios" | "md";
+
+      /**
+       * The icon that can be used to represent showing a password. If not set, the "eye" Ionicon will be used.
+       * API info: https://ionicframework.com/docs/api/input-password-toggle#showicon
+       */
+      "show-icon"?: string | undefined;
     }
 
     interface IonItem {
@@ -2317,18 +2359,6 @@ declare global {
         | undefined;
 
       /**
-       * If `true`, a character counter will display the ratio of characters used and the total character limit. Only applies when the `maxlength` property is set on the inner `ion-input` or `ion-textarea`.
-       * API info: https://ionicframework.com/docs/api/item#counter
-       */
-      counter?: boolean;
-
-      /**
-       * A callback used to format the counter text. By default the counter text is set to "itemLength / maxLength".
-       * API info: https://ionicframework.com/docs/api/item#counterformatter
-       */
-      "counter-formatter"?: ((inputLength: number, maxLength: number) => string) | undefined;
-
-      /**
        * If `true`, a detail arrow will appear on the item. Defaults to `false` unless the `mode` is `ios` and an `href` or `button` property is present.
        * API info: https://ionicframework.com/docs/api/item#detail
        */
@@ -2351,12 +2381,6 @@ declare global {
        * API info: https://ionicframework.com/docs/api/item#download
        */
       download?: string | undefined;
-
-      /**
-       * The fill for the item. If `"solid"` the item will have a background. If `"outline"` the item will be transparent with a border. Only available in `md` mode.
-       * API info: https://ionicframework.com/docs/api/item#fill
-       */
-      fill?: "outline" | "solid" | undefined;
 
       /**
        * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
@@ -2393,12 +2417,6 @@ declare global {
        * API info: https://ionicframework.com/docs/api/item#routerdirection
        */
       "router-direction"?: "back" | "forward" | "root";
-
-      /**
-       * The shape of the item. If "round" it will have increased border radius.
-       * API info: https://ionicframework.com/docs/api/item#shape
-       */
-      shape?: "round" | undefined;
 
       /**
        * Specifies where to display the linked URL. Only applies when an `href` is provided. Special keywords: `"_blank"`, `"_self"`, `"_parent"`, `"_top"`.
@@ -2813,7 +2831,7 @@ declare global {
        * The display type of the menu. Available options: `"overlay"`, `"reveal"`, `"push"`.
        * API info: https://ionicframework.com/docs/api/menu#type
        */
-      type?: string | undefined;
+      type?: "overlay" | "push" | "reveal" | undefined;
 
       /**
        * () => void :  Emitted when the menu is closed.
@@ -2925,7 +2943,7 @@ declare global {
       breakpoints?: number[] | undefined;
 
       /**
-       * Determines whether or not a modal can dismiss when calling the `dismiss` method.  If the value is `true` or the value's function returns `true`, the modal will close when trying to dismiss. If the value is `false` or the value's function returns `false`, the modal will not close when trying to dismiss.
+       * Determines whether or not a modal can dismiss when calling the `dismiss` method.  If the value is `true` or the value's function returns `true`, the modal will close when trying to dismiss. If the value is `false` or the value's function returns `false`, the modal will not close when trying to dismiss.  See https://ionicframework.com/docs/troubleshooting/runtime#accessing-this if you need to access `this` from within the callback.
        * API info: https://ionicframework.com/docs/api/modal#candismiss
        */
       "can-dismiss"?: ((data?: any, role?: string | undefined) => Promise<boolean>) | boolean;
@@ -2935,6 +2953,12 @@ declare global {
        * API info: https://ionicframework.com/docs/api/modal#enteranimation
        */
       "enter-animation"?: ((baseEl: any, opts?: any) => Animation) | undefined;
+
+      /**
+       * If `true`, focus will not be allowed to move outside of this overlay. If `false`, focus will be allowed to move outside of the overlay.  In most scenarios this property should remain set to `true`. Setting this property to `false` can cause severe accessibility issues as users relying on assistive technologies may be able to move focus into a confusing state. We recommend only setting this to `false` when absolutely necessary.  Developers may want to consider disabling focus trapping if this overlay presents a non-Ionic overlay from a 3rd party library. Developers would disable focus trapping on the Ionic overlay when presenting the 3rd party overlay and then re-enable focus trapping when dismissing the 3rd party overlay and moving focus back to the Ionic overlay.
+       * API info: https://ionicframework.com/docs/api/modal#focustrap
+       */
+      "focus-trap"?: boolean;
 
       /**
        * The horizontal line that displays at the top of a sheet modal. It is `true` by default when setting the `breakpoints` and `initialBreakpoint` properties.
@@ -3159,86 +3183,169 @@ declare global {
 
     interface IonPicker {
       /**
+       * The mode determines which platform styles to use.
+       * API info: https://ionicframework.com/docs/api/picker#mode
+       */
+      mode?: "ios" | "md";
+    }
+
+    interface IonPickerColumn {
+      /**
+       * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+       * API info: https://ionicframework.com/docs/api/picker-column#color
+       */
+      color?:
+        | "danger"
+        | "dark"
+        | "light"
+        | "medium"
+        | "primary"
+        | "secondary"
+        | "success"
+        | "tertiary"
+        | "warning"
+        | (string & Record<never, never>)
+        | undefined;
+
+      /**
+       * If `true`, the user cannot interact with the picker.
+       * API info: https://ionicframework.com/docs/api/picker-column#disabled
+       */
+      disabled?: boolean;
+
+      /**
+       * The mode determines which platform styles to use.
+       * API info: https://ionicframework.com/docs/api/picker-column#mode
+       */
+      mode?: "ios" | "md";
+
+      /**
+       * The selected option in the picker.
+       * API info: https://ionicframework.com/docs/api/picker-column#value
+       */
+      value?: number | string | undefined;
+
+      /**
+       * (event : PickerColumnChangeEventDetail) => void :  Emitted when the value has changed.  This event will not emit when programmatically setting the `value` property.
+       */
+      "on:ionChange"?: (
+        event: CustomEvent<PickerColumnChangeEventDetail> & { target: HTMLIonPickerColumnElement }
+      ) => void;
+    }
+
+    interface IonPickerColumnOption {
+      /**
+       * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
+       * API info: https://ionicframework.com/docs/api/picker-column-option#color
+       */
+      color?:
+        | "danger"
+        | "dark"
+        | "light"
+        | "medium"
+        | "primary"
+        | "secondary"
+        | "success"
+        | "tertiary"
+        | "warning"
+        | (string & Record<never, never>)
+        | undefined;
+
+      /**
+       * If `true`, the user cannot interact with the picker column option.
+       * API info: https://ionicframework.com/docs/api/picker-column-option#disabled
+       */
+      disabled?: boolean;
+
+      /**
+       * The text value of the option.
+       * API info: https://ionicframework.com/docs/api/picker-column-option#value
+       */
+      value?: any;
+    }
+
+    interface IonPickerLegacy {
+      /**
        * If `true`, the picker will animate.
-       * API info: https://ionicframework.com/docs/api/picker#animated
+       * API info: https://ionicframework.com/docs/api/picker-legacy#animated
        */
       animated?: boolean;
 
       /**
        * If `true`, the picker will be dismissed when the backdrop is clicked.
-       * API info: https://ionicframework.com/docs/api/picker#backdropdismiss
+       * API info: https://ionicframework.com/docs/api/picker-legacy#backdropdismiss
        */
       "backdrop-dismiss"?: boolean;
 
       /**
        * Array of buttons to be displayed at the top of the picker.
-       * API info: https://ionicframework.com/docs/api/picker#buttons
+       * API info: https://ionicframework.com/docs/api/picker-legacy#buttons
        */
       buttons?: PickerButton[];
 
       /**
        * Array of columns to be displayed in the picker.
-       * API info: https://ionicframework.com/docs/api/picker#columns
+       * API info: https://ionicframework.com/docs/api/picker-legacy#columns
        */
       columns?: PickerColumn[];
 
       /**
        * Additional classes to apply for custom CSS. If multiple classes are provided they should be separated by spaces.
-       * API info: https://ionicframework.com/docs/api/picker#cssclass
+       * API info: https://ionicframework.com/docs/api/picker-legacy#cssclass
        */
       "css-class"?: string | string[] | undefined;
 
       /**
        * Number of milliseconds to wait before dismissing the picker.
-       * API info: https://ionicframework.com/docs/api/picker#duration
+       * API info: https://ionicframework.com/docs/api/picker-legacy#duration
        */
       duration?: number;
 
       /**
        * Animation to use when the picker is presented.
-       * API info: https://ionicframework.com/docs/api/picker#enteranimation
+       * API info: https://ionicframework.com/docs/api/picker-legacy#enteranimation
        */
       "enter-animation"?: ((baseEl: any, opts?: any) => Animation) | undefined;
 
       /**
        * Additional attributes to pass to the picker.
-       * API info: https://ionicframework.com/docs/api/picker#htmlattributes
+       * API info: https://ionicframework.com/docs/api/picker-legacy#htmlattributes
        */
       "html-attributes"?: undefined | { [key: string]: any };
 
       /**
        * If `true`, the picker will open. If `false`, the picker will close. Use this if you need finer grained control over presentation, otherwise just use the pickerController or the `trigger` property. Note: `isOpen` will not automatically be set back to `false` when the picker dismisses. You will need to do that in your code.
-       * API info: https://ionicframework.com/docs/api/picker#isopen
+       * API info: https://ionicframework.com/docs/api/picker-legacy#isopen
        */
       "is-open"?: boolean;
 
       /**
        * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
-       * API info: https://ionicframework.com/docs/api/picker#keyboardclose
+       * API info: https://ionicframework.com/docs/api/picker-legacy#keyboardclose
        */
       "keyboard-close"?: boolean;
 
       /**
        * Animation to use when the picker is dismissed.
-       * API info: https://ionicframework.com/docs/api/picker#leaveanimation
+       * API info: https://ionicframework.com/docs/api/picker-legacy#leaveanimation
        */
       "leave-animation"?: ((baseEl: any, opts?: any) => Animation) | undefined;
 
       /**
        * The mode determines which platform styles to use.
-       * API info: https://ionicframework.com/docs/api/picker#mode
+       * API info: https://ionicframework.com/docs/api/picker-legacy#mode
        */
       mode?: "ios" | "md";
 
       /**
        * If `true`, a backdrop will be displayed behind the picker.
-       * API info: https://ionicframework.com/docs/api/picker#showbackdrop
+       * API info: https://ionicframework.com/docs/api/picker-legacy#showbackdrop
        */
       "show-backdrop"?: boolean;
 
       /**
        * An ID corresponding to the trigger element that causes the picker to open when clicked.
-       * API info: https://ionicframework.com/docs/api/picker#trigger
+       * API info: https://ionicframework.com/docs/api/picker-legacy#trigger
        */
       trigger?: string | undefined;
 
@@ -3246,7 +3353,7 @@ declare global {
        * (event : OverlayEventDetail<any>) => void :  Emitted after the picker has dismissed. Shorthand for ionPickerDidDismiss.
        */
       "on:didDismiss"?: (
-        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerElement }
+        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerLegacyElement }
       ) => void;
 
       /**
@@ -3258,7 +3365,7 @@ declare global {
        * (event : OverlayEventDetail<any>) => void :  Emitted after the picker has dismissed.
        */
       "on:ionPickerDidDismiss"?: (
-        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerElement }
+        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerLegacyElement }
       ) => void;
 
       /**
@@ -3270,7 +3377,7 @@ declare global {
        * (event : OverlayEventDetail<any>) => void :  Emitted before the picker has dismissed.
        */
       "on:ionPickerWillDismiss"?: (
-        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerElement }
+        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerLegacyElement }
       ) => void;
 
       /**
@@ -3282,7 +3389,7 @@ declare global {
        * (event : OverlayEventDetail<any>) => void :  Emitted before the picker has dismissed. Shorthand for ionPickerWillDismiss.
        */
       "on:willDismiss"?: (
-        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerElement }
+        event: CustomEvent<OverlayEventDetail<any>> & { target: HTMLIonPickerLegacyElement }
       ) => void;
 
       /**
@@ -3347,6 +3454,12 @@ declare global {
       event?: any;
 
       /**
+       * If `true`, focus will not be allowed to move outside of this overlay. If `false`, focus will be allowed to move outside of the overlay.  In most scenarios this property should remain set to `true`. Setting this property to `false` can cause severe accessibility issues as users relying on assistive technologies may be able to move focus into a confusing state. We recommend only setting this to `false` when absolutely necessary.  Developers may want to consider disabling focus trapping if this overlay presents a non-Ionic overlay from a 3rd party library. Developers would disable focus trapping on the Ionic overlay when presenting the 3rd party overlay and then re-enable focus trapping when dismissing the 3rd party overlay and moving focus back to the Ionic overlay.
+       * API info: https://ionicframework.com/docs/api/popover#focustrap
+       */
+      "focus-trap"?: boolean;
+
+      /**
        * Additional attributes to pass to the popover.
        * API info: https://ionicframework.com/docs/api/popover#htmlattributes
        */
@@ -3401,7 +3514,7 @@ declare global {
       side?: "bottom" | "end" | "left" | "right" | "start" | "top";
 
       /**
-       * Describes how to calculate the popover width. If `"cover"`, the popover width will match the width of the trigger. If `"auto"`, the popover width will be determined by the content in the popover.
+       * Describes how to calculate the popover width. If `"cover"`, the popover width will match the width of the trigger. If `"auto"`, the popover width will be set to a static default value.
        * API info: https://ionicframework.com/docs/api/popover#size
        */
       size?: "auto" | "cover";
@@ -3524,6 +3637,12 @@ declare global {
 
     interface IonRadio {
       /**
+       * How to control the alignment of the radio and label on the cross axis. `"start"`: The label and control will appear on the left of the cross axis in LTR, and on the right side in RTL. `"center"`: The label and control will appear at the center of the cross axis in both LTR and RTL.
+       * API info: https://ionicframework.com/docs/api/radio#alignment
+       */
+      alignment?: "center" | "start";
+
+      /**
        * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
        * API info: https://ionicframework.com/docs/api/radio#color
        */
@@ -3553,16 +3672,10 @@ declare global {
       justify?: "end" | "space-between" | "start";
 
       /**
-       * Where to place the label relative to the radio. `"start"`: The label will appear to the left of the radio in LTR and to the right in RTL. `"end"`: The label will appear to the right of the radio in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("...").
+       * Where to place the label relative to the radio. `"start"`: The label will appear to the left of the radio in LTR and to the right in RTL. `"end"`: The label will appear to the right of the radio in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("..."). `"stacked"`: The label will appear above the radio regardless of the direction. The alignment of the label can be controlled with the `alignment` property.
        * API info: https://ionicframework.com/docs/api/radio#labelplacement
        */
-      "label-placement"?: "end" | "fixed" | "start";
-
-      /**
-       * Set the `legacy` property to `true` to forcibly use the legacy form control markup. Ionic will only opt components in to the modern form markup when they are using either the `aria-label` attribute or the default slot that contains the label text. As a result, the `legacy` property should only be used as an escape hatch when you want to avoid this automatic opt-in behavior. Note that this property will be removed in an upcoming major release of Ionic, and all form components will be opted-in to using the modern form markup.
-       * API info: https://ionicframework.com/docs/api/radio#legacy
-       */
-      legacy?: boolean | undefined;
+      "label-placement"?: "end" | "fixed" | "stacked" | "start";
 
       /**
        * The mode determines which platform styles to use.
@@ -3601,6 +3714,16 @@ declare global {
       "allow-empty-selection"?: boolean;
 
       /**
+       * This property allows developers to specify a custom function or property name for comparing objects when determining the selected option in the ion-radio-group. When not specified, the default behavior will use strict equality (===) for comparison.
+       * API info: https://ionicframework.com/docs/api/radio-group#comparewith
+       */
+      "compare-with"?:
+        | ((currentValue: any, compareValue: any) => boolean)
+        | null
+        | string
+        | undefined;
+
+      /**
        * The name of the control, which is submitted with the form data.
        * API info: https://ionicframework.com/docs/api/radio-group#name
        */
@@ -3613,7 +3736,7 @@ declare global {
       value?: any;
 
       /**
-       * (event : RadioGroupChangeEventDetail<any>) => void :  Emitted when the value has changed.
+       * (event : RadioGroupChangeEventDetail<any>) => void :  Emitted when the value has changed.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<RadioGroupChangeEventDetail<any>> & { target: HTMLIonRadioGroupElement }
@@ -3669,16 +3792,10 @@ declare global {
       label?: string | undefined;
 
       /**
-       * Where to place the label relative to the range. `"start"`: The label will appear to the left of the range in LTR and to the right in RTL. `"end"`: The label will appear to the right of the range in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("...").
+       * Where to place the label relative to the range. `"start"`: The label will appear to the left of the range in LTR and to the right in RTL. `"end"`: The label will appear to the right of the range in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("..."). `"stacked"`: The label will appear above the range regardless of the direction.
        * API info: https://ionicframework.com/docs/api/range#labelplacement
        */
-      "label-placement"?: "end" | "fixed" | "start";
-
-      /**
-       * Set the `legacy` property to `true` to forcibly use the legacy form control markup. Ionic will only opt components in to the modern form markup when they are using either the `aria-label` attribute or the `label` property. As a result, the `legacy` property should only be used as an escape hatch when you want to avoid this automatic opt-in behavior. Note that this property will be removed in an upcoming major release of Ionic, and all form components will be opted-in to using the modern form markup.
-       * API info: https://ionicframework.com/docs/api/range#legacy
-       */
-      legacy?: boolean | undefined;
+      "label-placement"?: "end" | "fixed" | "stacked" | "start";
 
       /**
        * Maximum integer value of the range.
@@ -3711,7 +3828,7 @@ declare global {
       pin?: boolean;
 
       /**
-       * A callback used to format the pin text. By default the pin text is set to `Math.round(value)`.
+       * A callback used to format the pin text. By default the pin text is set to `Math.round(value)`.  See https://ionicframework.com/docs/troubleshooting/runtime#accessing-this if you need to access `this` from within the callback.
        * API info: https://ionicframework.com/docs/api/range#pinformatter
        */
       "pin-formatter"?: (value: number) => string | number;
@@ -3746,7 +3863,7 @@ declare global {
       "on:ionBlur"?: () => void;
 
       /**
-       * (event : RangeChangeEventDetail) => void :  The `ionChange` event is fired for `<ion-range>` elements when the user modifies the element's value: - When the user releases the knob after dragging; - When the user moves the knob with keyboard arrows  `ionChange` is not fired when the value is changed programmatically.
+       * (event : RangeChangeEventDetail) => void :  The `ionChange` event is fired for `<ion-range>` elements when the user modifies the element's value: - When the user releases the knob after dragging; - When the user moves the knob with keyboard arrows  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<RangeChangeEventDetail> & { target: HTMLIonRangeElement }
@@ -3791,6 +3908,12 @@ declare global {
        * API info: https://ionicframework.com/docs/api/refresher#disabled
        */
       disabled?: boolean;
+
+      /**
+       * The mode determines which platform styles to use.
+       * API info: https://ionicframework.com/docs/api/refresher#mode
+       */
+      mode?: "ios" | "md";
 
       /**
        * How much to multiply the pull speed by. To slow the pull animation down, pass a number less than `1`. To speed up the pull, pass a number greater than `1`. The default value is `1` which is equal to the speed of the cursor. If a negative value is passed in, the factor will be `1` instead.  For example: If the value passed is `1.2` and the content is dragged by `10` pixels, instead of `10` pixels the content will be pulled by `12` pixels (an increase of 20 percent). If the value passed is `0.8`, the dragged amount will be `8` pixels, less than the amount the cursor has moved.  Does not apply when the refresher content uses a spinner, enabling the native refresher.
@@ -4063,6 +4186,12 @@ declare global {
       animated?: boolean;
 
       /**
+       * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user. Available options: `"off"`, `"none"`, `"on"`, `"sentences"`, `"words"`, `"characters"`.
+       * API info: https://ionicframework.com/docs/api/searchbar#autocapitalize
+       */
+      autocapitalize?: string;
+
+      /**
        * Set the input's autocomplete property.
        * API info: https://ionicframework.com/docs/api/searchbar#autocomplete
        */
@@ -4197,6 +4326,18 @@ declare global {
         | undefined;
 
       /**
+       * This attribute specifies the maximum number of characters that the user can enter.
+       * API info: https://ionicframework.com/docs/api/searchbar#maxlength
+       */
+      maxlength?: number | undefined;
+
+      /**
+       * This attribute specifies the minimum number of characters that the user can enter.
+       * API info: https://ionicframework.com/docs/api/searchbar#minlength
+       */
+      minlength?: number | undefined;
+
+      /**
        * The mode determines which platform styles to use.
        * API info: https://ionicframework.com/docs/api/searchbar#mode
        */
@@ -4261,7 +4402,7 @@ declare global {
       "on:ionCancel"?: () => void;
 
       /**
-       * (event : SearchbarChangeEventDetail) => void :  The `ionChange` event is fired for `<ion-searchbar>` elements when the user modifies the element's value. Unlike the `ionInput` event, the `ionChange` event is not necessarily fired for each alteration to an element's value.  The `ionChange` event is fired when the value has been committed by the user. This can happen when the element loses focus or when the "Enter" key is pressed. `ionChange` can also fire when clicking the clear or cancel buttons.
+       * (event : SearchbarChangeEventDetail) => void :  The `ionChange` event is fired for `<ion-searchbar>` elements when the user modifies the element's value. Unlike the `ionInput` event, the `ionChange` event is not necessarily fired for each alteration to an element's value.  The `ionChange` event is fired when the value has been committed by the user. This can happen when the element loses focus or when the "Enter" key is pressed. `ionChange` can also fire when clicking the clear or cancel buttons.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<SearchbarChangeEventDetail> & { target: HTMLIonSearchbarElement }
@@ -4340,7 +4481,7 @@ declare global {
       value?: number | string | undefined;
 
       /**
-       * (event : SegmentChangeEventDetail) => void :  Emitted when the value property has changed and any dragging pointer has been released from `ion-segment`.
+       * (event : SegmentChangeEventDetail) => void :  Emitted when the value property has changed and any dragging pointer has been released from `ion-segment`.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<SegmentChangeEventDetail> & { target: HTMLIonSegmentElement }
@@ -4411,7 +4552,7 @@ declare global {
         | undefined;
 
       /**
-       * A property name or function used to compare object values
+       * This property allows developers to specify a custom function or property name for comparing objects when determining the selected option in the ion-select. When not specified, the default behavior will use strict equality (===) for comparison.
        * API info: https://ionicframework.com/docs/api/select#comparewith
        */
       "compare-with"?:
@@ -4467,12 +4608,6 @@ declare global {
        * API info: https://ionicframework.com/docs/api/select#labelplacement
        */
       "label-placement"?: "end" | "fixed" | "floating" | "stacked" | "start" | undefined;
-
-      /**
-       * Set the `legacy` property to `true` to forcibly use the legacy form control markup. Ionic will only opt components in to the modern form markup when they are using either the `aria-label` attribute or the `label` property. As a result, the `legacy` property should only be used as an escape hatch when you want to avoid this automatic opt-in behavior. Note that this property will be removed in an upcoming major release of Ionic, and all form components will be opted-in to using the modern form markup.
-       * API info: https://ionicframework.com/docs/api/select#legacy
-       */
-      legacy?: boolean | undefined;
 
       /**
        * The mode determines which platform styles to use.
@@ -4539,7 +4674,7 @@ declare global {
       "on:ionCancel"?: () => void;
 
       /**
-       * (event : SelectChangeEventDetail<any>) => void :  Emitted when the value has changed.
+       * (event : SelectChangeEventDetail<any>) => void :  Emitted when the value has changed.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<SelectChangeEventDetail<any>> & { target: HTMLIonSelectElement }
@@ -4821,7 +4956,7 @@ declare global {
       autocapitalize?: string;
 
       /**
-       * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+       * Sets the [`autofocus` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus) on the native input element.  This may not be sufficient for the element to be focused on page load. See [managing focus](/docs/developing/managing-focus) for more information.
        * API info: https://ionicframework.com/docs/api/textarea#autofocus
        */
       autofocus?: boolean;
@@ -4862,7 +4997,7 @@ declare global {
       counter?: boolean;
 
       /**
-       * A callback used to format the counter text. By default the counter text is set to "itemLength / maxLength".
+       * A callback used to format the counter text. By default the counter text is set to "itemLength / maxLength".  See https://ionicframework.com/docs/troubleshooting/runtime#accessing-this if you need to access `this` from within the callback.
        * API info: https://ionicframework.com/docs/api/textarea#counterformatter
        */
       "counter-formatter"?: ((inputLength: number, maxLength: number) => string) | undefined;
@@ -4929,12 +5064,6 @@ declare global {
        * API info: https://ionicframework.com/docs/api/textarea#labelplacement
        */
       "label-placement"?: "end" | "fixed" | "floating" | "stacked" | "start";
-
-      /**
-       * Set the `legacy` property to `true` to forcibly use the legacy form control markup. Ionic will only opt components in to the modern form markup when they are using either the `aria-label` attribute or the default slot that contains the label text. As a result, the `legacy` property should only be used as an escape hatch when you want to avoid this automatic opt-in behavior. Note that this property will be removed in an upcoming major release of Ionic, and all form components will be opted-in to using the modern form markup.
-       * API info: https://ionicframework.com/docs/api/textarea#legacy
-       */
-      legacy?: boolean | undefined;
 
       /**
        * This attribute specifies the maximum number of characters that the user can enter.
@@ -5014,7 +5143,7 @@ declare global {
       "on:ionBlur"?: (event: CustomEvent<FocusEvent> & { target: HTMLIonTextareaElement }) => void;
 
       /**
-       * (event : TextareaChangeEventDetail) => void :  The `ionChange` event is fired when the user modifies the textarea's value. Unlike the `ionInput` event, the `ionChange` event is fired when the element loses focus after its value has been modified.
+       * (event : TextareaChangeEventDetail) => void :  The `ionChange` event is fired when the user modifies the textarea's value. Unlike the `ionInput` event, the `ionChange` event is fired when the element loses focus after its value has been modified.  This event will not emit when programmatically setting the `value` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<TextareaChangeEventDetail> & { target: HTMLIonTextareaElement }
@@ -5163,10 +5292,22 @@ declare global {
       mode?: "ios" | "md";
 
       /**
-       * The position of the toast on the screen.
+       * The starting position of the toast on the screen. Can be tweaked further using the `positionAnchor` property.
        * API info: https://ionicframework.com/docs/api/toast#position
        */
       position?: "bottom" | "middle" | "top";
+
+      /**
+       * The element to anchor the toast's position to. Can be set as a direct reference or the ID of the element. With `position="bottom"`, the toast will sit above the chosen element. With `position="top"`, the toast will sit below the chosen element. With `position="middle"`, the value of `positionAnchor` is ignored.
+       * API info: https://ionicframework.com/docs/api/toast#positionanchor
+       */
+      "position-anchor"?: HTMLElement | string | undefined;
+
+      /**
+       * If set to 'vertical', the Toast can be dismissed with a swipe gesture. The swipe direction is determined by the value of the `position` property: `top`: The Toast can be swiped up to dismiss. `bottom`: The Toast can be swiped down to dismiss. `middle`: The Toast can be swiped up or down to dismiss.
+       * API info: https://ionicframework.com/docs/api/toast#swipegesture
+       */
+      "swipe-gesture"?: "vertical" | undefined;
 
       /**
        * If `true`, the toast will be translucent. Only applies when the mode is `"ios"` and the device supports [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
@@ -5231,6 +5372,12 @@ declare global {
 
     interface IonToggle {
       /**
+       * How to control the alignment of the toggle and label on the cross axis. `"start"`: The label and control will appear on the left of the cross axis in LTR, and on the right side in RTL. `"center"`: The label and control will appear at the center of the cross axis in both LTR and RTL.
+       * API info: https://ionicframework.com/docs/api/toggle#alignment
+       */
+      alignment?: "center" | "start";
+
+      /**
        * If `true`, the toggle is selected.
        * API info: https://ionicframework.com/docs/api/toggle#checked
        */
@@ -5272,16 +5419,10 @@ declare global {
       justify?: "end" | "space-between" | "start";
 
       /**
-       * Where to place the label relative to the input. `"start"`: The label will appear to the left of the toggle in LTR and to the right in RTL. `"end"`: The label will appear to the right of the toggle in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("...").
+       * Where to place the label relative to the input. `"start"`: The label will appear to the left of the toggle in LTR and to the right in RTL. `"end"`: The label will appear to the right of the toggle in LTR and to the left in RTL. `"fixed"`: The label has the same behavior as `"start"` except it also has a fixed width. Long text will be truncated with ellipses ("..."). `"stacked"`: The label will appear above the toggle regardless of the direction. The alignment of the label can be controlled with the `alignment` property.
        * API info: https://ionicframework.com/docs/api/toggle#labelplacement
        */
-      "label-placement"?: "end" | "fixed" | "start";
-
-      /**
-       * Set the `legacy` property to `true` to forcibly use the legacy form control markup. Ionic will only opt components in to the modern form markup when they are using either the `aria-label` attribute or the default slot that contains the label text. As a result, the `legacy` property should only be used as an escape hatch when you want to avoid this automatic opt-in behavior. Note that this property will be removed in an upcoming major release of Ionic, and all form components will be opted-in to using the modern form markup.
-       * API info: https://ionicframework.com/docs/api/toggle#legacy
-       */
-      legacy?: boolean | undefined;
+      "label-placement"?: "end" | "fixed" | "stacked" | "start";
 
       /**
        * The mode determines which platform styles to use.
@@ -5307,7 +5448,7 @@ declare global {
       "on:ionBlur"?: () => void;
 
       /**
-       * (event : ToggleChangeEventDetail<any>) => void :  Emitted when the user switches the toggle on or off. Does not emit when programmatically changing the value of the `checked` property.
+       * (event : ToggleChangeEventDetail<any>) => void :  Emitted when the user switches the toggle on or off.  This event will not emit when programmatically setting the `checked` property.
        */
       "on:ionChange"?: (
         event: CustomEvent<ToggleChangeEventDetail<any>> & { target: HTMLIonToggleElement }
@@ -5379,6 +5520,7 @@ declare global {
       "ion-infinite-scroll": IonInfiniteScroll & HTMLBaseAttributes;
       "ion-infinite-scroll-content": IonInfiniteScrollContent & HTMLBaseAttributes;
       "ion-input": IonInput & HTMLBaseAttributes;
+      "ion-input-password-toggle": IonInputPasswordToggle & HTMLBaseAttributes;
       "ion-item": IonItem & HTMLBaseAttributes;
       "ion-item-divider": IonItemDivider & HTMLBaseAttributes;
       "ion-item-group": IonItemGroup & HTMLBaseAttributes;
@@ -5397,6 +5539,9 @@ declare global {
       "ion-nav-link": IonNavLink & HTMLBaseAttributes;
       "ion-note": IonNote & HTMLBaseAttributes;
       "ion-picker": IonPicker & HTMLBaseAttributes;
+      "ion-picker-column": IonPickerColumn & HTMLBaseAttributes;
+      "ion-picker-column-option": IonPickerColumnOption & HTMLBaseAttributes;
+      "ion-picker-legacy": IonPickerLegacy & HTMLBaseAttributes;
       "ion-popover": IonPopover & HTMLBaseAttributes;
       "ion-progress-bar": IonProgressBar & HTMLBaseAttributes;
       "ion-radio": IonRadio & HTMLBaseAttributes;

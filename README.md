@@ -272,3 +272,12 @@ PWA logo: https://github.com/webmaxru/progressive-web-apps-logo
 Borat logo: https://sapper.svelte.dev/
 
 Raymondboswel's repo: https://github.com/raymondboswel/ionic-svelte-example
+
+## Bumping Ionic Version
+
+- download core.json file for @ionic/core@latest
+- npm i @ionic/core@latest
+- go to scripts folder and run node generator.js
+- open index.d.ts and save file (pretty formatting) and check for errors
+- bump package.json version
+- run npm publish
