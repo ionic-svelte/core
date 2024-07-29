@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.5.85
+
+- fix as per discord suggestion https://discord.com/channels/520266681499779082/1049388501629681675/1264201865231339520
+  (style 100% in IonNav)
+
 ## 0.5.83
 
 - bumped Ionic core 8.2.2

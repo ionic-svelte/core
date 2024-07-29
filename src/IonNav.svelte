@@ -19,6 +19,8 @@
     divWrapper.id = contentID;
 
     let navContent = document.createElement("div");
+    navContent.id = contentID + "-content";
+    navContent.style.height = "100%";
 
     divWrapper.appendChild(navContent);
     document.body.appendChild(divWrapper);
