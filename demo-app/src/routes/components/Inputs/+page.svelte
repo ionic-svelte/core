@@ -2,7 +2,8 @@
 	import SourceButton from '$lib/components/SourceButton.svelte';
 	import { alertController, IonPage } from 'ionic-svelte';
 
-	import { superForm, setMessage, setError } from 'sveltekit-superforms/client';
+	import { superForm, defaults, setMessage, setError } from 'sveltekit-superforms';
+	import { zod } from 'sveltekit-superforms/adapters';
 	import { z } from 'zod';
 
 	const userSchema = z.object({
@@ -10,17 +11,14 @@
 		lastName: z.string().min(2).default('')
 	});
 
-	type User = z.infer<typeof userSchema>; // not used - but usefull
-
-	const { form, errors, message, constraints, enhance, delayed, validate } = superForm(
-		{ firstName: '', lastName: '' },
+	const { form, errors, message, constraints, enhance, delayed, validate } = superForm(defaults(zod(userSchema)),
 		{
 			SPA: true,
-			validators: userSchema,
+			validators: zod(userSchema),
 			onUpdate(form) {
 				console.log('SUBMIT clicked, received form', form);
 			},
-			onError({ result, message }) {
+			onError({ result }) {
 				console.log('ERROR received', result, message);
 				message.set(result.error.message);
 			},
