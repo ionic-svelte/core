@@ -23,75 +23,75 @@
 	<ion-content fullscreen>
 		<ion-list>
 			<ion-item>
-				<ion-label>Blueberry</ion-label>
-				<ion-toggle on:ionChange={toggleAction} slot="start" name="blueberry" checked />
+				<ion-label>Color: Primary</ion-label>
+				<ion-toggle on:ionChange={toggleAction} slot="start" name="primary" checked />
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Apple</ion-label>
+				<ion-label>Color: Secondary</ion-label>
 				<ion-toggle
 					on:ionChange={toggleAction}
 					slot="start"
-					name="apple"
+					name="secondary"
 					color="secondary"
 					checked
 				/>
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Grape</ion-label>
+				<ion-label>Color: Tertiary</ion-label>
 				<ion-toggle
 					on:ionChange={toggleAction}
 					slot="start"
-					name="grape"
+					name="tertiary"
 					color="tertiary"
 					checked
 				/>
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Kiwi</ion-label>
-				<ion-toggle on:ionChange={toggleAction} slot="start" name="kiwi" color="success" checked />
+				<ion-label>Color: Success</ion-label>
+				<ion-toggle on:ionChange={toggleAction} slot="start" name="success" color="success" checked />
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Orange</ion-label>
+				<ion-label>Color: Warning</ion-label>
 				<ion-toggle
 					on:ionChange={toggleAction}
 					slot="start"
-					name="banana"
+					name="warning"
 					color="warning"
 					checked
 				/>
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Cherry</ion-label>
-				<ion-toggle on:ionChange={toggleAction} slot="start" name="cherry" color="danger" checked />
+				<ion-label>Color: Danger</ion-label>
+				<ion-toggle on:ionChange={toggleAction} slot="start" name="danger" color="danger" checked />
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Banana</ion-label>
-				<ion-toggle on:ionChange={toggleAction} slot="start" name="banana" color="light" checked />
+				<ion-label>Color: Light</ion-label>
+				<ion-toggle on:ionChange={toggleAction} slot="start" name="light" color="light" checked />
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Cantaloupe</ion-label>
+				<ion-label>Color: Medium</ion-label>
 				<ion-toggle
 					on:ionChange={toggleAction}
 					slot="start"
-					name="cantaloupe"
+					name="medium"
 					color="medium"
 					checked
 				/>
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Blackberry</ion-label>
+				<ion-label>Color: Dark</ion-label>
 				<ion-toggle
 					on:ionChange={toggleAction}
 					slot="start"
-					name="blackberry"
+					name="dark"
 					color="dark"
 					checked
 				/>
