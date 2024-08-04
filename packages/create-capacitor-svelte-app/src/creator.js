@@ -323,44 +323,43 @@ function createSvelteKitLayout(opts) {
 	const str = `<script${opts.types == 'typescript' ? ` lang='ts'` : ''}>
 	import { setupIonicBase } from 'ionic-svelte';
 
-	/* Call Ionic's setup routine */
+	/* Call Ionic's setup routine. */
 	setupIonicBase();
 
-	/* Import all components - or do partial loading - see below */
+	/* Import all components. (You can selectively import components instead; see below.) */
 	import 'ionic-svelte/components/all';
 
 	/* Theme variables */
 	import '../theme/variables.css';
 
 	/*
-		This part - import 'ionic-svelte/components/all'; -  loads all components at once.
+		This part - import 'ionic-svelte/components/all'; - loads all components at once. Importing this way adds 80 components and >800kb (uncompressed) to your bundle.
 
-		This adds at least >800kb (uncompressed) to your bundle - 80 components (so do your math!!)
+		Alternately, you can choose to import only the components you want to use.
 
-		You can also choose to import each component you want to use separately and leave out others.
+		Doing selective imports in this file is recommended because you only have to do such imports once.
+		If you like to code-split differently, you are free to import whereever you like.
 
-		It is recommended to do this in this file, as you only need to do such once. But you are free
-		to do this elsewhere if you like to code-split differently. 
+		Example: If you replace the line import 'ionic-svelte/components/all'; with the imports below, the resulting bundle becomes much smaller.
 
-		Example: if you replace the line import 'ionic-svelte/components/all'; with the imports below, you will see the resulting bundle being much smaller
-		
 		import 'ionic-svelte/components/ion-app';
 		import 'ionic-svelte/components/ion-card';
 		import 'ionic-svelte/components/ion-card-title';
 		import 'ionic-svelte/components/ion-card-subtitle';
 		import 'ionic-svelte/components/ion-card-header';
 		import 'ionic-svelte/components/ion-card-content';
-		import 'ionic-svelte/components/ion-chip';
 		import 'ionic-svelte/components/ion-button';
+		import 'ionic-svelte/components/ion-item';
+		import 'ionic-svelte/components/ion-label';
 
-		Click the ionic-svelte-components-all-import above to go to the full list of possible imports.
+		To see the full list of possible imports, click ionic-svelte-components-all-import above.
 
-		Please don't forget to import ion-app in this file when you decide to code-split:
+		When you decide to do selective imports, ion-app must be imported in this file like this:
 
 	    import 'ionic-svelte/components/ion-app';
 
-		You can report issues here - https://github.com/Tommertom/svelte-ionic-npm/issues
-		Want to know what is happening more - follow me on Twitter - https://twitter.com/Tommertomm
+		Report issues here - https://github.com/Tommertom/svelte-ionic-npm/issues
+		Want to know more about what is happening? Follow me on X! - https://x.com/Tommertomm
 		Discord channel on Ionic server - https://discordapp.com/channels/520266681499779082/1049388501629681675
 	*/
 </script>
