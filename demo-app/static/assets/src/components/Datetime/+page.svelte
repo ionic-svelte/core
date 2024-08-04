@@ -31,8 +31,7 @@
 			expand="block"
 			on:click={() => {
 				modalOpen = true;
-			}}>Open Datetime Modal</ion-button
-		>
+			}}>Open Datetime Modal</ion-button>
 		<ion-modal is-open={modalOpen}>
 			<ion-content force-overscroll="false">
 				<ion-datetime />
@@ -40,8 +39,7 @@
 					expand="block"
 					on:click={() => {
 						modalOpen = false;
-					}}>Close</ion-button
-				>
+					}}>Close</ion-button>
 			</ion-content>
 		</ion-modal>
 		<ion-list>
@@ -55,8 +53,7 @@
 					on:ionChange={changeValue}
 					display-format="h:mm A"
 					picker-format="h:mm A"
-					value="1990-02-19T07:43Z"
-				/>
+					value="1990-02-19T07:43Z" />
 			</ion-item>
 			<ion-item>
 				<ion-label>Ends</ion-label>

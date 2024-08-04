@@ -38,8 +38,7 @@
 					color="primary"
 					checked
 					slot="start"
-					on:ionChange={checkBoxChange}
-				/>
+					on:ionChange={checkBoxChange} />
 			</ion-item>
 			<ion-item>
 				<ion-checkbox
@@ -47,8 +46,7 @@
 					on:ionChange={checkBoxChange}
 					color="dark"
 					checked
-					slot="start"
-				/>
+					slot="start" />
 				<ion-label>Daenerys Targaryen</ion-label>
 			</ion-item>
 			<ion-item>
@@ -65,8 +63,7 @@
 					on:ionChange={checkBoxChange}
 					color="danger"
 					checked
-					slot="start"
-				/>
+					slot="start" />
 				<ion-label>Sansa Stark</ion-label>
 			</ion-item>
 			<ion-item>
@@ -79,8 +76,7 @@
 					on:ionChange={checkBoxChange}
 					color="tertiary"
 					checked
-					slot="start"
-				/>
+					slot="start" />
 				<ion-label>Cersei Lannister</ion-label>
 			</ion-item>
 			<ion-item>
@@ -89,8 +85,7 @@
 					value="stannis"
 					on:ionChange={checkBoxChange}
 					checked
-					slot="start"
-				/>
+					slot="start" />
 				<ion-label>Stannis Baratheon</ion-label>
 			</ion-item>
 			<ion-item>
@@ -103,8 +98,7 @@
 					value="hodor"
 					on:ionChange={checkBoxChange}
 					checked
-					slot="start"
-				/>
+					slot="start" />
 				<ion-label>Hodor</ion-label>
 			</ion-item>
 			<ion-item>
@@ -113,8 +107,7 @@
 					value="catelyn"
 					on:ionChange={checkBoxChange}
 					checked
-					slot="start"
-				/>
+					slot="start" />
 				<ion-label>Catelyn Stark</ion-label>
 			</ion-item>
 			<ion-item>

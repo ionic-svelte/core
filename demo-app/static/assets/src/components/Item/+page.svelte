@@ -31,7 +31,6 @@
 		console.log('Drag event', event);
 	};
 	//	console.log('stuff', itemSlidingEnd, itemSlidingStart);
-
 </script>
 
 <svelte:head>

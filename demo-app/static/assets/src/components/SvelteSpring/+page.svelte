@@ -66,8 +66,7 @@
 				coords.set({ x: e.clientX, y: e.clientY });
 			}}
 			on:mousedown={() => size.set(30)}
-			on:mouseup={() => size.set(10)}
-		>
+			on:mouseup={() => size.set(10)}>
 			<circle cx={$coords.x} cy={$coords.y} r={$size} />
 		</svg>
 	</ion-content>

@@ -436,7 +436,8 @@
 		const options = {
 			header: 'OOPS!',
 			subHeader: 'broken',
-			message: 'Opening modal with modalcontroller does no longer work as of Ionic7 - needs debugging',
+			message:
+				'Opening modal with modalcontroller does no longer work as of Ionic7 - needs debugging',
 			buttons: ['OK']
 		};
 

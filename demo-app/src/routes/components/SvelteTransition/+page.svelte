@@ -106,8 +106,7 @@
 				on:introstart={() => (status = 'intro started')}
 				on:outrostart={() => (status = 'outro started')}
 				on:introend={() => (status = 'intro ended')}
-				on:outroend={() => (status = 'outro ended')}
-			>
+				on:outroend={() => (status = 'outro ended')}>
 				Flies in and out with event listener
 			</p>
 		{/if}
@@ -144,8 +143,7 @@
 		<ion-button
 			on:click={() => {
 				number += 1;
-			}}
-		>
+			}}>
 			Increment number of transitions demo
 		</ion-button>
 	</ion-content>

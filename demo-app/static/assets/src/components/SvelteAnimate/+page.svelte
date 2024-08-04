@@ -98,8 +98,7 @@
 				<h2>Todos</h2>
 				<ion-input
 					placeholder="what needs to be done?"
-					on:keydown={(e) => e.key === 'Enter' && add(e.target)}
-				/>
+					on:keydown={(e) => e.key === 'Enter' && add(e.target)} />
 				{#each todos.filter((t) => !t.done) as todo (todo.id)}
 					<ion-item in:receive={{ key: todo.id }} out:send={{ key: todo.id }} animate:flip>
 						<label>

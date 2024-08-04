@@ -22,32 +22,28 @@
 		button
 		on:click={() => {
 			closeOverlay('Learn Ionic');
-		}}
-	>
+		}}>
 		Learn Ionic
 	</ion-item>
 	<ion-item
 		button
 		on:click={() => {
 			closeOverlay('Documentation');
-		}}
-	>
+		}}>
 		Documentation
 	</ion-item>
 	<ion-item
 		button
 		on:click={() => {
 			closeOverlay('Showcase');
-		}}
-	>
+		}}>
 		Showcase
 	</ion-item>
 	<ion-item
 		button
 		on:click={() => {
 			closeOverlay('Github');
-		}}
-	>
+		}}>
 		GitHub Repo
 	</ion-item>
 </ion-list>
@@ -56,7 +52,6 @@
 	expand="block"
 	on:click={() => {
 		closeOverlay(undefined);
-	}}
->
+	}}>
 	Close
 </ion-button>

@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static'
+import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 
 const config = {
@@ -14,9 +14,8 @@ const config = {
 			precompress: false
 		}),
 		alias: {
-			'$ionic': 'src/lib/ionic',
+			$ionic: 'src/lib/ionic'
 		}
-
 	}
 };
 

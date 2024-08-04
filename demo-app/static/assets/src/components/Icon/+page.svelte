@@ -80,8 +80,7 @@
 				animated
 				debounce={1500}
 				show-cancel-button="never"
-				on:ionInput={handleInput}
-			/>
+				on:ionInput={handleInput} />
 		</ion-toolbar>
 	</ion-header>
 
@@ -92,8 +91,7 @@
 					<ion-col
 						on:click={() => {
 							iconClicked(icon);
-						}}
-					>
+						}}>
 						<ion-icon icon={allIonicIcons[icon]} color={getRandomColor()} />
 					</ion-col>
 				{/each}

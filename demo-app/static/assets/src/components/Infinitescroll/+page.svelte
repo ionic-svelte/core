@@ -90,8 +90,7 @@
 		<ion-infinite-scroll
 			on:ionInfinite={infiniteAction}
 			threshold="100px"
-			bind:this={infiniteScroll}
-		>
+			bind:this={infiniteScroll}>
 			<ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data..." />
 		</ion-infinite-scroll>
 	</ion-content>

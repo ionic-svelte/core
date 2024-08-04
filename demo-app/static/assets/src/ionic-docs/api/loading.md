@@ -1,6 +1,7 @@
 ---
-title: "ion-loading"
+title: 'ion-loading'
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -20,7 +21,6 @@ import EncapsulationPill from '@components/page/api/EncapsulationPill';
 import APITOCInline from '@components/page/api/APITOCInline';
 
 <EncapsulationPill type="scoped" />
-
 
 An overlay that can be used to indicate activity while blocking user interaction. The loading indicator appears on top of the app's content, and can be dismissed by the app to resume user interaction with the app. It includes an optional backdrop, which can be disabled by setting `showBackdrop: false` upon creation.
 
@@ -48,57 +48,58 @@ import React, { useState } from 'react';
 import { IonLoading, IonButton, IonContent } from '@ionic/react';
 
 export const LoadingExample: React.FC = () => {
-  const [showLoading, setShowLoading] = useState(false);
+	const [showLoading, setShowLoading] = useState(false);
 
-  return (
-    <IonContent>
-      <IonButton onClick={() => setShowLoading(true)}>Show Loading</IonButton>
-      <IonLoading
-        cssClass='my-custom-class'
-        isOpen={showLoading}
-        onDidDismiss={() => setShowLoading(false)}
-        message={'Please wait...'}
-        duration={5000}
-      />
-    </IonContent>
-  );
+	return (
+		<IonContent>
+			<IonButton onClick={() => setShowLoading(true)}>Show Loading</IonButton>
+			<IonLoading
+				cssClass="my-custom-class"
+				isOpen={showLoading}
+				onDidDismiss={() => setShowLoading(false)}
+				message={'Please wait...'}
+				duration={5000}
+			/>
+		</IonContent>
+	);
 };
 ```
+
 </TabItem>
 <TabItem value="vue">
 
 ```html
 <template>
-  <ion-content>
-    <ion-button @click="setOpen(true)">Show Loading</ion-button>
-    <ion-loading
-      :is-open="isOpenRef"
-      cssClass="my-custom-class"
-      message="Please wait..."
-      :duration="timeout"
-      @didDismiss="setOpen(false)"
-    >
-    </ion-loading>
-  </ion-content>
+	<ion-content>
+		<ion-button @click="setOpen(true)">Show Loading</ion-button>
+		<ion-loading
+			:is-open="isOpenRef"
+			cssClass="my-custom-class"
+			message="Please wait..."
+			:duration="timeout"
+			@didDismiss="setOpen(false)">
+		</ion-loading>
+	</ion-content>
 </template>
 
 <script lang="ts">
-import { IonButton, IonContent, IonLoading } from '@ionic/vue';
-import { defineComponent, ref } from 'vue';
-export default defineComponent({
-  props: {
-    timeout: { type: Number, default: 1000 },
-  },
-  components: { IonButton, IonContent, IonLoading },
-  setup() {
-    const isOpenRef = ref(false);
-    const setOpen = (state: boolean) => isOpenRef.value = state;
-    
-    return { isOpenRef, setOpen }
-  }
-});
+	import { IonButton, IonContent, IonLoading } from '@ionic/vue';
+	import { defineComponent, ref } from 'vue';
+	export default defineComponent({
+		props: {
+			timeout: { type: Number, default: 1000 }
+		},
+		components: { IonButton, IonContent, IonLoading },
+		setup() {
+			const isOpenRef = ref(false);
+			const setOpen = (state: boolean) => (isOpenRef.value = state);
+
+			return { isOpenRef, setOpen };
+		}
+	});
 </script>
 ```
+
 </TabItem>
 </Tabs>
 
@@ -123,9 +124,8 @@ import Theming from '@site/static/usage/loading/theming/index.md';
 <Theming />
 
 :::note
- `ion-loading` is presented at the root of your application, so we recommend placing any `ion-loading` styles in a global stylesheet.
+`ion-loading` is presented at the root of your application, so we recommend placing any `ion-loading` styles in a global stylesheet.
 :::
-
 
 ## Interfaces
 
@@ -133,24 +133,23 @@ import Theming from '@site/static/usage/loading/theming/index.md';
 
 ```typescript
 interface LoadingOptions {
-  spinner?: SpinnerTypes | null;
-  message?: string | IonicSafeString;
-  cssClass?: string | string[];
-  showBackdrop?: boolean;
-  duration?: number;
-  translucent?: boolean;
-  animated?: boolean;
-  backdropDismiss?: boolean;
-  mode?: Mode;
-  keyboardClose?: boolean;
-  id?: string;
-  htmlAttributes?: { [key: string]: any };
+	spinner?: SpinnerTypes | null;
+	message?: string | IonicSafeString;
+	cssClass?: string | string[];
+	showBackdrop?: boolean;
+	duration?: number;
+	translucent?: boolean;
+	animated?: boolean;
+	backdropDismiss?: boolean;
+	mode?: Mode;
+	keyboardClose?: boolean;
+	id?: string;
+	htmlAttributes?: { [key: string]: any };
 
-  enterAnimation?: AnimationBuilder;
-  leaveAnimation?: AnimationBuilder;
+	enterAnimation?: AnimationBuilder;
+	leaveAnimation?: AnimationBuilder;
 }
 ```
-
 
 <Props />
 <Events />

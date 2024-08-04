@@ -18,7 +18,6 @@ Use their great tools - https://www.skeleton.dev/
 
 */
 
-
 async function main() {
 	// grab any passed arguments from the command line
 	let opts = await parseArgs();
@@ -33,11 +32,11 @@ async function main() {
 		opts = await askForMissingParams(opts);
 	}
 
-	// Now that we have all of the options, lets create it. 
+	// Now that we have all of the options, lets create it.
 	await createIonicSvelte(opts);
 
 	// And give the user some final information on what to do Next
-	if (!(opts?.quiet)) {
+	if (!opts?.quiet) {
 		// @ts-ignore
 		const pm = opts.packagemanager;
 		let runString = `${pm} dev`;
@@ -83,7 +82,11 @@ async function main() {
 		if (options.capacitor) {
 			console.log(bold('✔ Capacitor'));
 			console.log(cyan('  https://capacitorjs.com/docs/getting-started'));
-			console.log(bold('  Please note - the project is configured with HMR - remove server entry in capacitor.config.json for final build'));
+			console.log(
+				bold(
+					'  Please note - the project is configured with HMR - remove server entry in capacitor.config.json for final build'
+				)
+			);
 		}
 
 		if (options.ionic) {
@@ -112,7 +115,9 @@ async function main() {
 			console.log(`  ${i++}: ${bold(cyan(`cd ${relative}`))} `);
 		}
 
-		console.log(`  ${i++}: ${bold(cyan('git init && git add -A && git commit -m "Initial commit"'))} (optional)`);
+		console.log(
+			`  ${i++}: ${bold(cyan('git init && git add -A && git commit -m "Initial commit"'))} (optional)`
+		);
 
 		//	console.log(`  ${ i++ }: ${ bold(cyan('npm install')) } (or pnpm install, etc)`);
 		// prettier-ignore
@@ -126,17 +131,29 @@ async function main() {
 		console.log(`  ${i++}: ${bold(cyan('npm run dev -- --open'))}`);
 		console.log(`\nTo close the dev server, hit ${bold(cyan('Ctrl-C'))}`);
 		if (options.capacitor && opts.types != 'typescript') {
-			console.log(`\nWant HMR in Capacitor dev mode? Rename ${bold(cyan('_server'))} to ${bold(cyan('server'))} in ${bold(cyan('capacitor.config.json'))}`);
+			console.log(
+				`\nWant HMR in Capacitor dev mode? Rename ${bold(cyan('_server'))} to ${bold(cyan('server'))} in ${bold(cyan('capacitor.config.json'))}`
+			);
 		}
 		if (options.capacitor && opts.types == 'typescript') {
-			console.log(`\nUse the ${bold(cyan('-hmr'))} flag after your ${bold(cyan('npx cap run/open/sync'))} commands to use HMR together with ${bold(cyan('npm run dev'))}`);
+			console.log(
+				`\nUse the ${bold(cyan('-hmr'))} flag after your ${bold(cyan('npx cap run/open/sync'))} commands to use HMR together with ${bold(cyan('npm run dev'))}`
+			);
 		}
 
-		console.log(`\nHint: Make your app offline and near native by turning it into a progressive web app - see ${cyan(' https://github.com/vite-pwa/sveltekit')}`);
+		console.log(
+			`\nHint: Make your app offline and near native by turning it into a progressive web app - see ${cyan(' https://github.com/vite-pwa/sveltekit')}`
+		);
 
-		console.log(`\nStuck? Visit us at Ionic's discord ${cyan('https://discordapp.com/channels/520266681499779082/1049388501629681675')}`);
+		console.log(
+			`\nStuck? Visit us at Ionic's discord ${cyan('https://discordapp.com/channels/520266681499779082/1049388501629681675')}`
+		);
 
-		console.log(grey(`\nNeed some help or found an issue with this installer? Visit us on Github https://github.com/Tommertom/svelte-ionic-npm`));
+		console.log(
+			grey(
+				`\nNeed some help or found an issue with this installer? Visit us on Github https://github.com/Tommertom/svelte-ionic-npm`
+			)
+		);
 	}
 	process.exit();
 }
@@ -168,7 +185,7 @@ async function parseArgs() {
 			'vitest',
 			'ionicons',
 			'capacitor'
-		],
+		]
 	});
 
 	// If a user invokes 'create-app blah foo', it falls into the _ catch all list, the best we can do is take the first one and use that as the name
@@ -184,7 +201,6 @@ async function parseArgs() {
 	}
 	return opts;
 }
-
 
 export async function askForMissingParams(opts) {
 	// prettier-ignore
@@ -203,9 +219,7 @@ ${bold(red('This is BETA software; expect bugs and missing features.'))}
 Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor-npm/issues')}.
 `;
 
-	const { version } = JSON.parse(
-		fs.readFileSync(dist('../package.json'), 'utf-8'),
-	);
+	const { version } = JSON.parse(fs.readFileSync(dist('../package.json'), 'utf-8'));
 
 	console.log(gray(`\ncreate-capacitor-svelte-app version ${version}`));
 	console.log(disclaimer);
@@ -218,7 +232,7 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 		questions.push({
 			type: 'text',
 			name: 'name',
-			message: 'Name for your new project:',
+			message: 'Name for your new project:'
 		});
 	}
 
@@ -246,14 +260,14 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 			choices: [
 				{
 					title: 'Yes, using JavaScript with JSDoc comments',
-					value: 'checkjs',
+					value: 'checkjs'
 				},
 				{
 					title: 'Yes, using TypeScript syntax',
-					value: 'typescript',
+					value: 'typescript'
 				},
-				{ title: 'No', value: null },
-			],
+				{ title: 'No', value: null }
+			]
 		};
 		questions.push(q);
 	}
@@ -265,7 +279,7 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 			message: 'Add ESLint for code linting?',
 			initial: false,
 			active: 'Yes',
-			inactive: 'No',
+			inactive: 'No'
 		};
 		questions.push(q);
 	}
@@ -277,7 +291,7 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 			message: 'Add Prettier for code formatting?',
 			initial: false,
 			active: 'Yes',
-			inactive: 'No',
+			inactive: 'No'
 		};
 		questions.push(q);
 	}
@@ -289,7 +303,7 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 			message: 'Add Playwright for browser testing?',
 			initial: false,
 			active: 'Yes',
-			inactive: 'No',
+			inactive: 'No'
 		};
 		questions.push(q);
 	}
@@ -302,7 +316,7 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 			initial: false,
 			active: 'Yes',
 			inactive: 'No'
-		}
+		};
 		questions.push(q);
 	}
 
@@ -314,7 +328,7 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 			initial: false,
 			active: 'Yes',
 			inactive: 'No'
-		}
+		};
 		questions.push(q);
 	}
 
@@ -337,7 +351,7 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 			initial: false,
 			active: 'Yes',
 			inactive: 'No'
-		}
+		};
 		questions.push(q);
 	}
 
@@ -353,7 +367,8 @@ Problems? Open an issue on ${cyan('https://github.com/Tommertom/svelte-capacitor
 	//Prompts returns the twplugins as an array, but it makes it easier to use on the command line if they are seperated booleans
 	//We map them out from the array here and delete the now useless twplugins prop before proceeding to overlay the response values onto opts
 	//@ts-ignore
-	if (response.twplugins != undefined) Object.keys(response.twplugins).forEach((index) => (opts[response.twplugins[index]] = true));
+	if (response.twplugins != undefined)
+		Object.keys(response.twplugins).forEach((index) => (opts[response.twplugins[index]] = true));
 	delete response.twplugins;
 	Object.assign(opts, response);
 	const skelOpts = new IonicSvelteOptions();

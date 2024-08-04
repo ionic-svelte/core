@@ -9,12 +9,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"typeRoots": [
-			"./node_modules/ionic-svelte"
-		],
-		"types": [
-			"ionic-svelte"
-		]
+		"typeRoots": ["./node_modules/ionic-svelte"],
+		"types": ["ionic-svelte"]
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//

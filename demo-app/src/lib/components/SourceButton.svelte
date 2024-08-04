@@ -28,8 +28,7 @@
 	is-open={isOpen}
 	on:ionModalDidDismiss={() => {
 		isOpen = false;
-	}}
->
+	}}>
 	<SourceViewer {name} />
 </ion-modal>
 

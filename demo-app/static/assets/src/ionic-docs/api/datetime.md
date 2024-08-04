@@ -1,6 +1,7 @@
 ---
-title: "ion-datetime"
+title: 'ion-datetime'
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -48,7 +49,7 @@ import APITOCInline from '@components/page/api/APITOCInline';
 
 Datetimes present a calendar interface and time wheel, making it easy for users to select dates and times. Datetimes are similar to the native `input` elements of `datetime-local`, however, Ionic Framework's Datetime component makes it easy to display the date and time in the preferred format, and manage the datetime values.
 
-## Overview 
+## Overview
 
 Historically, handling datetime values within JavaScript, or even within HTML
 inputs, has always been a challenge. Specifically, JavaScript's `Date` object is
@@ -71,16 +72,16 @@ more detailed down to the millisecond and time zone. Any of the ISO formats belo
 can be used, and after a user selects a new value, Ionic Framework will continue to use
 the same ISO format which datetime value was originally given as.
 
-| Description          | Format                 | Datetime Value Example        |
-| -------------------- | ---------------------- | ----------------------------  |
-| Year                 | YYYY                   | 1994                          |
-| Year and Month       | YYYY-MM                | 1994-12                       |
-| Complete Date        | YYYY-MM-DD             | 1994-12-15                    |
-| Date and Time        | YYYY-MM-DDTHH:mm       | 1994-12-15T13:47              |
-| UTC Timezone         | YYYY-MM-DDTHH:mm:ssZ   | 1994-12-15T13:47:20Z          |
-| Timezone Offset      | YYYY-MM-DDTHH:mm:ssTZD | 1994-12-15T13:47:20+05:00     |
-| Hour and Minute      | HH:mm                  | 13:47                         |
-| Hour, Minute, Second | HH:mm:ss               | 13:47:20                      |
+| Description          | Format                 | Datetime Value Example    |
+| -------------------- | ---------------------- | ------------------------- |
+| Year                 | YYYY                   | 1994                      |
+| Year and Month       | YYYY-MM                | 1994-12                   |
+| Complete Date        | YYYY-MM-DD             | 1994-12-15                |
+| Date and Time        | YYYY-MM-DDTHH:mm       | 1994-12-15T13:47          |
+| UTC Timezone         | YYYY-MM-DDTHH:mm:ssZ   | 1994-12-15T13:47:20Z      |
+| Timezone Offset      | YYYY-MM-DDTHH:mm:ssTZD | 1994-12-15T13:47:20+05:00 |
+| Hour and Minute      | HH:mm                  | 13:47                     |
+| Hour, Minute, Second | HH:mm:ss               | 13:47:20                  |
 
 Note that the year is always four-digits, milliseconds (if it's added) is always
 three-digits, and all others are always two-digits. So the number representing
@@ -98,7 +99,7 @@ always in the 24-hour format, so `00` is `12am` on a 12-hour clock, `13` means
 
 To customize the minimum and maximum datetime values, the `min` and `max` component properties can be provided which may make more sense for the app's use-case. Following the same IS0 8601 format listed in the table above, each component can restrict which dates can be selected by the user.
 
-The following example restricts date selection to March 2022 through May 2022 only. 
+The following example restricts date selection to March 2022 through May 2022 only.
 
 <MaxMin />
 
@@ -112,7 +113,7 @@ The following example allows minutes to be selected in increments of 15. It also
 
 ### Advanced Date Constraints
 
-With the `isDateEnabled` property, developers can customize the `ion-datetime` to disable a specific day, range of dates, weekends or any custom rule using an ISO 8601 date string. 
+With the `isDateEnabled` property, developers can customize the `ion-datetime` to disable a specific day, range of dates, weekends or any custom rule using an ISO 8601 date string.
 The `isDateEnabled` property accepts a function returning a boolean, indicating if a date is enabled. The function is called for each rendered calendar day, for the previous, current and next month. Custom implementations should be optimized for performance to avoid jank.
 
 The following example shows how to disable all weekend dates. For more advanced date manipulation, we recommend using a date utility such as `date-fns`.
@@ -141,17 +142,16 @@ The time label is not automatically localized. See [Time Label](#time-label) for
 
 There are 4 primary hour cycle types:
 
-| Hour cycle type | Description                                                  |
-| --------------- | ------------------------------------------------------------ |
-| `'h12'`          | Hour system using 1–12; corresponds to 'h' in patterns. The 12 hour clock, with midnight starting at 12:00 am. |
-| `'h23'`         | Hour system using 0–23; corresponds to 'H' in patterns. The 24 hour clock, with midnight starting at 0:00. |
-| `'h11'`         | Hour system using 0–11; corresponds to 'K' in patterns. The 12 hour clock, with midnight starting at 0:00 am. |
-| `'h24'`         | Hour system using 1–24; corresponds to 'k' in pattern. The 24 hour clock, with midnight starting at 24:00. |
+| Hour cycle type | Description                                                                                                    |
+| --------------- | -------------------------------------------------------------------------------------------------------------- |
+| `'h12'`         | Hour system using 1–12; corresponds to 'h' in patterns. The 12 hour clock, with midnight starting at 12:00 am. |
+| `'h23'`         | Hour system using 0–23; corresponds to 'H' in patterns. The 24 hour clock, with midnight starting at 0:00.     |
+| `'h11'`         | Hour system using 0–11; corresponds to 'K' in patterns. The 12 hour clock, with midnight starting at 0:00 am.  |
+| `'h24'`         | Hour system using 1–24; corresponds to 'k' in pattern. The 24 hour clock, with midnight starting at 24:00.     |
 
 :::note
-  Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/hourCycle
+Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/hourCycle
 :::
-
 
 There may be scenarios where you need to have more control over which hour cycle is used. This is where the `hourCycle` property can help.
 
@@ -180,7 +180,7 @@ For example, if you wanted to use a 12 hour cycle with the `en-GB` locale, you c
 <LocaleExtensionTags />
 
 :::note
-Be sure to check the [Browser Compatibility Chart](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale#browser_compatibility)  for `Intl.Locale` before using it in your app.
+Be sure to check the [Browser Compatibility Chart](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale#browser_compatibility) for `Intl.Locale` before using it in your app.
 :::
 
 ## Presentation
@@ -293,7 +293,7 @@ import { format, parseISO } from 'date-fns';
 /**
  * This is provided in the event
  * payload from the `ionChange` event.
- * 
+ *
  * The value is an ISO-8601 date string.
  */
 const dateFromIonDatetime = '2021-06-04T14:23:00-04:00';
@@ -303,7 +303,6 @@ console.log(formattedString); // Jun 4, 2021
 ```
 
 See https://date-fns.org/docs/format for a list of all the valid format tokens.
-
 
 ## Advanced Datetime Validation and Manipulation
 
@@ -323,37 +322,37 @@ dates in JavaScript.
 
 `ion-datetime` has full keyboard support for navigating between focusable elements inside of the component. The following table details what each key does:
 
-| Key                | Function                                                     |
-| ------------------ | ------------------------------------------------------------ |
-| `Tab`              | Moves focus to the next focusable element.                   |
-| `Shift` + `Tab`    | Moves focus to the previous focusable element.               |
-| `Space` or `Enter` | Clicks the focusable element.                                |
+| Key                | Function                                       |
+| ------------------ | ---------------------------------------------- |
+| `Tab`              | Moves focus to the next focusable element.     |
+| `Shift` + `Tab`    | Moves focus to the previous focusable element. |
+| `Space` or `Enter` | Clicks the focusable element.                  |
 
 #### Date Grid
 
-| Key                | Function                                                     |
-| ------------------ | ------------------------------------------------------------ |
-| `ArrowUp` | Moves focus to the same day of the previous week. |
-| `ArrowDown` | Moves focus to the same day of the next week. |
-| `ArrowRight` | Moves focus to the next day. |
-| `ArrowLeft` | Moves focus to the previous day. |
-| `Home` | Moves focus to the first day of the current week. |
-| `End` | Moves focus to the last day of the current week. |
-| `PageUp` | Changes the grid of dates to the previous month. |
-| `PageDown` | Changes the grid of dates to the next month. |
-| `Shift` + `PageUp` | Changes the grid of dates to the previous year. |
-| `Shift` + `PageDown` | Changes the grid of dates to the next year. |
+| Key                  | Function                                          |
+| -------------------- | ------------------------------------------------- |
+| `ArrowUp`            | Moves focus to the same day of the previous week. |
+| `ArrowDown`          | Moves focus to the same day of the next week.     |
+| `ArrowRight`         | Moves focus to the next day.                      |
+| `ArrowLeft`          | Moves focus to the previous day.                  |
+| `Home`               | Moves focus to the first day of the current week. |
+| `End`                | Moves focus to the last day of the current week.  |
+| `PageUp`             | Changes the grid of dates to the previous month.  |
+| `PageDown`           | Changes the grid of dates to the next month.      |
+| `Shift` + `PageUp`   | Changes the grid of dates to the previous year.   |
+| `Shift` + `PageDown` | Changes the grid of dates to the next year.       |
 
 #### Time, Month, and Year Wheels
 
 When using the time wheel picker, you can use the number keys to select hour and minute values when the columns are focused.
 
-| Key                | Function                                                     |
-| ------------------ | ------------------------------------------------------------ |
-| `ArrowUp` | Scroll to the previous item. |
-| `ArrowDown` | Scroll to the next item. |
-| `Home` | Scroll to the first item. |
-| `End` | Scroll to the last item. |
+| Key         | Function                     |
+| ----------- | ---------------------------- |
+| `ArrowUp`   | Scroll to the previous item. |
+| `ArrowDown` | Scroll to the next item.     |
+| `Home`      | Scroll to the first item.    |
+| `End`       | Scroll to the last item.     |
 
 ## Interfaces
 
@@ -361,7 +360,7 @@ When using the time wheel picker, you can use the number keys to select hour and
 
 ```typescript
 interface DatetimeChangeEventDetail {
-  value?: string | null;
+	value?: string | null;
 }
 ```
 
@@ -371,8 +370,8 @@ While not required, this interface can be used in place of the `CustomEvent` int
 
 ```typescript
 interface DatetimeCustomEvent extends CustomEvent {
-  detail: DatetimeChangeEventDetail;
-  target: HTMLIonDatetimeElement;
+	detail: DatetimeChangeEventDetail;
+	target: HTMLIonDatetimeElement;
 }
 ```
 

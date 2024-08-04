@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.5.86
+
+- added prettier and applied it to the files
+
 ## 0.5.85
 
 - fix as per discord suggestion https://discord.com/channels/520266681499779082/1049388501629681675/1264201865231339520

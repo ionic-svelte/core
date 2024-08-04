@@ -52,8 +52,7 @@
 	on:ionTabsDidChange={ionTabsDidChange}
 	on:ionNavWillLoad={ionNavWillLoad}
 	on:ionTabsWillChange={ionTabsWillChange}
-	bind:this={ionTabBarElement}
->
+	bind:this={ionTabBarElement}>
 	{#each tabs as tab}
 		<ion-tab tab={tab.tab}>
 			<svelte:component this={tab.component} />

@@ -1,47 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<base href="/" />
+		<meta
+			name="viewport"
+			content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="description" content="IonicSvelte - best of Ionic, SvelteKit and Vite" />
 
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-	<base href="/" />
-	<meta name="viewport"
-		content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta name="description" content="IonicSvelte - best of Ionic, SvelteKit and Vite">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta name="msapplication-TileColor" content="#da532c" />
 
-	<meta name="format-detection" content="telephone=no" />
-	<meta name="msapplication-tap-highlight" content="no" />
-	<meta name="msapplication-TileColor" content="#da532c">
+		<!-- add to homescreen for ios    -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-	<!-- add to homescreen for ios    -->
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="alternate icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+		<link rel="manifest" href="/manifest.webmanifest" />
 
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="alternate icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="manifest" href="/manifest.webmanifest">
+		<meta name="theme-color" content="#ffffff" />
 
-	<meta name="theme-color" content="#ffffff">
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNGFLY1HYH"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNGFLY1HYH"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+			gtag('config', 'G-NNGFLY1HYH');
+		</script>
 
-		gtag('config', 'G-NNGFLY1HYH');
-	</script>
+		<title>Ionic + SvelteKit</title>
+		%sveltekit.head%
+	</head>
 
-	<title>Ionic + SvelteKit</title>
-	%sveltekit.head%
-</head>
-
-<body>
-	<div>%sveltekit.body%</div>
-</body>
-
+	<body>
+		<div>%sveltekit.body%</div>
+	</body>
 </html>

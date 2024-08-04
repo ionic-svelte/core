@@ -1,15 +1,15 @@
 <script lang="ts">
-  // here your menu component
-  // import Menu from "...";
-  import { setupIonicBase } from "ionic-svelte";
+	// here your menu component
+	// import Menu from "...";
+	import { setupIonicBase } from 'ionic-svelte';
 
-  /* Call Ionic's setup routine */
-  setupIonicBase();
+	/* Call Ionic's setup routine */
+	setupIonicBase();
 
-  /* Theme variables */
-  import "../theme/variables.css";
+	/* Theme variables */
+	import '../theme/variables.css';
 
-  /*
+	/*
 		The next command loads and registers all Ionic Webcomponents for you to use.
 
 		This adds at least >800kb (uncompressed) to your bundle.
@@ -25,14 +25,14 @@
 		
 	    import 'ionic-svelte/components/ion-app';
 	*/
-  import "ionic-svelte/components/all";
+	import 'ionic-svelte/components/all';
 </script>
 
 <ion-app>
-  <ion-split-pane content-id="main">
-    <Menu />
-    <div class="ion-page" id="main">
-      <slot />
-    </div>
-  </ion-split-pane>
+	<ion-split-pane content-id="main">
+		<Menu />
+		<div class="ion-page" id="main">
+			<slot />
+		</div>
+	</ion-split-pane>
 </ion-app>

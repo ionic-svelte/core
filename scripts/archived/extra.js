@@ -1,5 +1,5 @@
 module.exports = {
-  IonSplitPane: `const QUERY: { [key: string]: string } = {
+	IonSplitPane: `const QUERY: { [key: string]: string } = {
         xs: '(min-width: 0px)',
         sm: '(min-width: 576px)',
         md: '(min-width: 768px)',
@@ -8,12 +8,12 @@ module.exports = {
         never: '',
       };`,
 
-  IonSearchbar: `
+	IonSearchbar: `
       import { config } from '@ionic/core'
       import { arrowBackSharp, closeCircle, closeSharp, searchOutline, searchSharp } from 'ionicons/icons';
       `,
 
-  IonInput: `
+	IonInput: `
       import { createEventDispatcher } from "svelte";
       const dispatch=createEventDispatcher()  
       const ionChange= (event)=>{
@@ -22,7 +22,7 @@ module.exports = {
        }
       `,
 
-  IonTextarea: `
+	IonTextarea: `
       import { createEventDispatcher } from "svelte";
       const dispatch=createEventDispatcher()  
       const ionChange= (event)=>{
@@ -31,7 +31,7 @@ module.exports = {
        }
       `,
 
-  IonSelect: `
+	IonSelect: `
       import { createEventDispatcher } from "svelte";
       const dispatch=createEventDispatcher()  
       const ionChange= (event)=>{
@@ -40,7 +40,7 @@ module.exports = {
        }
       `,
 
-  IonCheckbox: `
+	IonCheckbox: `
           import { createEventDispatcher } from "svelte";
           const dispatch=createEventDispatcher()  
           const ionChange= (event)=>{
@@ -50,7 +50,7 @@ module.exports = {
            }
           `,
 
-  IonDatetime: `
+	IonDatetime: `
                 import { createEventDispatcher } from "svelte";
                 const dispatch=createEventDispatcher()  
                 const ionChange= (event)=>{
@@ -58,7 +58,7 @@ module.exports = {
                     dispatch("ionChange", event.detail);
                  }
                 `,
-  IonRange: `
+	IonRange: `
         import { createEventDispatcher } from "svelte";
         const dispatch=createEventDispatcher()  
         const ionChange= (event)=>{
@@ -66,7 +66,7 @@ module.exports = {
             dispatch("ionChange", event.detail);
         }
         `,
-  IonRadioGroup: `
+	IonRadioGroup: `
         import { createEventDispatcher } from "svelte";
         const dispatch=createEventDispatcher()  
         const ionChange= (event)=>{
@@ -75,7 +75,7 @@ module.exports = {
         }
         `,
 
-  IonSearchbar: `
+	IonSearchbar: `
         import { createEventDispatcher } from "svelte";
         const dispatch=createEventDispatcher()  
         const ionChange= (event)=>{
@@ -84,7 +84,7 @@ module.exports = {
         } 
         `,
 
-  IonSegment: `
+	IonSegment: `
         import { createEventDispatcher } from "svelte";
         const dispatch=createEventDispatcher()  
         const ionChange= (event)=>{
@@ -93,7 +93,7 @@ module.exports = {
         }
         `,
 
-  IonSelect: `
+	IonSelect: `
         import { createEventDispatcher } from "svelte";
         const dispatch=createEventDispatcher()  
         const ionChange= (event)=>{
@@ -102,7 +102,7 @@ module.exports = {
         }
         `,
 
-  IonToggle: `
+	IonToggle: `
         import { createEventDispatcher } from "svelte";
         const dispatch=createEventDispatcher()  
         const ionChange= (event)=>{
@@ -111,7 +111,7 @@ module.exports = {
         }
         `,
 
-  IonItem: `
+	IonItem: `
         import { chevronForward } from 'ionicons/icons';
-        `,
+        `
 };

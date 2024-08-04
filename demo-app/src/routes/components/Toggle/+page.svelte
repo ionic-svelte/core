@@ -34,8 +34,7 @@
 					slot="start"
 					name="apple"
 					color="secondary"
-					checked
-				/>
+					checked />
 			</ion-item>
 
 			<ion-item>
@@ -45,8 +44,7 @@
 					slot="start"
 					name="grape"
 					color="tertiary"
-					checked
-				/>
+					checked />
 			</ion-item>
 
 			<ion-item>
@@ -61,8 +59,7 @@
 					slot="start"
 					name="banana"
 					color="warning"
-					checked
-				/>
+					checked />
 			</ion-item>
 
 			<ion-item>
@@ -82,8 +79,7 @@
 					slot="start"
 					name="cantaloupe"
 					color="medium"
-					checked
-				/>
+					checked />
 			</ion-item>
 
 			<ion-item>
@@ -93,8 +89,7 @@
 					slot="start"
 					name="blackberry"
 					color="dark"
-					checked
-				/>
+					checked />
 			</ion-item>
 		</ion-list>
 	</ion-content>

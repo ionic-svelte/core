@@ -6,7 +6,14 @@ import { bold, grey, red } from 'kleur/colors';
 import { spawnSync } from 'node:child_process';
 import path from 'path';
 import process from 'process';
-import { getDemoCapacitorApp, getDemoIonicApp, getIonicVariables, getTSCapacitorConfig, mkdirp, whichPMRuns } from './utils.js';
+import {
+	getDemoCapacitorApp,
+	getDemoIonicApp,
+	getIonicVariables,
+	getTSCapacitorConfig,
+	mkdirp,
+	whichPMRuns
+} from './utils.js';
 // NOTE: Any changes here must also be reflected in the --help output in utils.ts and shortcut expansions in bin.ts.
 // Probably a good idea to do a search on the values you are changing to catch any other areas they are used in
 // Codebase would be a lot cleaner if Reflect() actually returned anything useful.
@@ -55,17 +62,14 @@ export async function createIonicSvelte(opts) {
 	let s = 0;
 	opts.verbose = true;
 
-	opts.path = path.resolve(
-		opts?.path,
-		opts.name.replace(/\s+/g, '-').toLowerCase(),
-	);
+	opts.path = path.resolve(opts?.path, opts.name.replace(/\s+/g, '-').toLowerCase());
 
 	if (fs.existsSync(opts.path)) {
 		console.error(red(bold('Install directory already exists!')));
 		process.exit();
 	}
 
-	if (!(opts?.quiet)) {
+	if (!opts?.quiet) {
 		console.log('Working: Creating base Svelte Kit install supercharged with Capacitor.');
 	}
 	fs.mkdirp(opts.path);
@@ -82,7 +86,7 @@ export async function createIonicSvelte(opts) {
 	// the order matters due to dependency resolution, because yarn
 	let packages = [
 		'svelte-preprocess',
-		'@sveltejs/adapter-static@1.0.1',
+		'@sveltejs/adapter-static@1.0.1'
 		//	'vite@4'
 	];
 	if (opts?.capacitor) packages.push('@capacitor/cli');
@@ -91,25 +95,26 @@ export async function createIonicSvelte(opts) {
 	// if (opts?.forms) packages.push('@tailwindcss/forms');
 	// if (opts?.lineclamp) packages.push('@tailwindcss/line-clamp');
 
-	if (!(opts?.quiet)) {
+	if (!opts?.quiet) {
 		console.log('Working: Installing project dependencies ' + grey(packages.toString()));
 	}
 
 	// packages = [];
 	let result = spawnSync(opts.packagemanager, ['add', '-D', ...packages], {
-		shell: true,
+		shell: true
 	});
 
-	if (opts.packagemanager != 'yarn'
-		&& result?.stderr.toString().length
-		&& (result?.stderr.toString().includes('ERR_PNPM') || result?.stderr.toString().includes('ERR!'))) {
+	if (
+		opts.packagemanager != 'yarn' &&
+		result?.stderr.toString().length &&
+		(result?.stderr.toString().includes('ERR_PNPM') || result?.stderr.toString().includes('ERR!'))
+	) {
 		console.log(
 			'Create-Capacitor-Svelte App - we received an error from the package manager - please submit issue on https://github.com/Tommertom/svelte-ionic-npm/issues \n',
-			result?.stderr.toString(),
+			result?.stderr.toString()
 		);
 		process.exit();
 	}
-
 
 	packages = [];
 	if (opts?.ionic) packages = ['@ionic/core@8.2.2', 'ionic-svelte'];
@@ -120,30 +125,33 @@ export async function createIonicSvelte(opts) {
 	console.log('Working: Adding ' + grey(packages.toString()));
 
 	result = spawnSync(opts.packagemanager, ['add', '-S', ...packages], {
-		shell: true,
+		shell: true
 	});
-	if (opts.packagemanager != 'yarn'
-		&& result?.stderr.toString().length
-		&& (result?.stderr.toString().includes('ERR_PNPM') || result?.stderr.toString().includes('ERR!'))) {
+	if (
+		opts.packagemanager != 'yarn' &&
+		result?.stderr.toString().length &&
+		(result?.stderr.toString().includes('ERR_PNPM') || result?.stderr.toString().includes('ERR!'))
+	) {
 		console.log(
 			'Create-Capacitor-Svelte App - we received an error from the package manager - please submit issue on https://github.com/Tommertom/svelte-ionic-npm/issues \n',
-			result?.stderr.toString(),
+			result?.stderr.toString()
 		);
 		process.exit();
 	}
 
-
-	packages = ['@sveltejs/adapter-auto']
+	packages = ['@sveltejs/adapter-auto'];
 	console.log('Working: Removing ' + grey(packages.toString()));
 	result = spawnSync(opts.packagemanager, ['remove', '-D', ...packages], {
-		shell: true,
+		shell: true
 	});
-	if (opts.packagemanager != 'yarn'
-		&& result?.stderr.toString().length
-		&& (result?.stderr.toString().includes('ERR_PNPM') || result?.stderr.toString().includes('ERR!'))) {
+	if (
+		opts.packagemanager != 'yarn' &&
+		result?.stderr.toString().length &&
+		(result?.stderr.toString().includes('ERR_PNPM') || result?.stderr.toString().includes('ERR!'))
+	) {
 		console.log(
 			'Create-Capacitor-Svelte App - we received an error from the package manager - please submit issue on https://github.com/Tommertom/svelte-ionic-npm/issues \n',
-			result?.stderr.toString(),
+			result?.stderr.toString()
 		);
 		process.exit();
 	}
@@ -160,59 +168,44 @@ export async function createIonicSvelte(opts) {
 	out('svelte.config.js', createSvelteConfig());
 
 	if (opts.framework == 'svelte-kit' || opts.framework == 'svelte-kit-lib') {
-		mkdirp(path.join('src', 'lib'))
-
+		mkdirp(path.join('src', 'lib'));
 
 		if (opts?.ionic) {
-			mkdirp(path.join('src', 'theme'))
+			mkdirp(path.join('src', 'theme'));
 			out(
 				path.resolve(process.cwd(), 'src/routes/', '+layout.svelte'),
-				createSvelteKitLayout(opts),
+				createSvelteKitLayout(opts)
 			);
 
+			out(path.resolve(process.cwd(), 'src/theme/', 'variables.css'), getIonicVariables());
 
-			out(
-				path.resolve(process.cwd(), 'src/theme/', 'variables.css'),
-				getIonicVariables()
-			);
-
-
-			out(
-				path.resolve(process.cwd(), 'src/routes/', '+page.svelte'),
-				getDemoIonicApp()
-			);
+			out(path.resolve(process.cwd(), 'src/routes/', '+page.svelte'), getDemoIonicApp());
 		}
 
 		if (!opts?.ionic) {
-			out(
-				path.resolve(process.cwd(), 'src/routes/', '+page.svelte'),
-				getDemoCapacitorApp()
-			);
+			out(path.resolve(process.cwd(), 'src/routes/', '+page.svelte'), getDemoCapacitorApp());
 		}
 
-		out(
-			path.resolve(process.cwd(), 'src/routes/', '+layout.ts'),
-			`export const ssr = false;`
-		);
-
-
+		out(path.resolve(process.cwd(), 'src/routes/', '+layout.ts'), 'export const ssr = false;\n');
 
 		// tsconfig
 		if (opts.types == 'typescript' && opts?.ionic) {
-
 			try {
 				const tsconfig = fs.readFileSync('tsconfig.json', 'utf-8');
 				//	console.log('Reading tsconfig ', tsconfig);
-				const tsconfignew = tsconfig.replace('"compilerOptions": {', `"compilerOptions": {
+				const tsconfignew = tsconfig.replace(
+					'"compilerOptions": {',
+					`"compilerOptions": {
 		"typeRoots": [
 			"./node_modules/ionic-svelte"
 		],
 		"types": [
 			"ionic-svelte"
-		],`);
+		],`
+				);
 
 				//	console.log('New tsconfig ', tsconfignew);
-				out(path.resolve(process.cwd(), './', 'tsconfig.json'), tsconfignew)
+				out(path.resolve(process.cwd(), './', 'tsconfig.json'), tsconfignew);
 			} catch (e) {
 				console.warn('TSconfig read/write error - ', e);
 			}
@@ -222,17 +215,21 @@ export async function createIonicSvelte(opts) {
 		try {
 			const packagagejson = fs.readFileSync('package.json', 'utf-8');
 			//	console.log('Reading tsconfig ', tsconfig);
-			const packagagejsonnew = packagagejson.replace('"dev": "vite dev"', `"dev": "vite dev --host"`);
+			const packagagejsonnew = packagagejson.replace(
+				'"dev": "vite dev"',
+				`"dev": "vite dev --host"`
+			);
 
 			//	console.log('New tsconfig ', tsconfignew);
-			out(path.resolve(process.cwd(), './', 'package.json'), packagagejsonnew)
+			out(path.resolve(process.cwd(), './', 'package.json'), packagagejsonnew);
 		} catch (e) {
 			console.warn('TSconfig read/write error - ', e);
 		}
 
-		if (opts.types != 'typescript') out(
-			'capacitor.config.json',
-			`{
+		if (opts.types != 'typescript')
+			out(
+				'capacitor.config.json',
+				`{
 	"webDir":"build",
 	"appId":"${opts.name}.ionic.io",
 	"appName":"${opts.name}",
@@ -241,15 +238,37 @@ export async function createIonicSvelte(opts) {
 	  "cleartext": true
 	}
 }`
-		);
+			);
 
-		if (opts.types == 'typescript') out('capacitor.config.ts',
-			getTSCapacitorConfig({
-				appId: opts.name + '.ionic.io',
-				appName: opts.name,
-				ip: ip.address() // 'http://192.168.137.1'
-			})
-		)
+		if (opts.types == 'typescript')
+			out(
+				'capacitor.config.ts',
+				getTSCapacitorConfig({
+					appId: opts.name + '.ionic.io',
+					appName: opts.name,
+					ip: ip.address() // 'http://192.168.137.1'
+				})
+			);
+	}
+
+	// close with prettier
+	if (opts?.prettier) {
+		console.log('Running Prettier on all files');
+		result = spawnSync(opts.packagemanager, ['run', 'format'], {
+			shell: true
+		});
+
+		if (
+			opts.packagemanager !== 'yarn' &&
+			result?.stderr.toString().length &&
+			(result?.stderr.toString().includes('ERR_PNPM') || result?.stderr.toString().includes('ERR!'))
+		) {
+			console.log(
+				'Create-Ionic-Svelte App - we received an error from the package manager - please submit issue on https://github.com/Tommertom/svelte-ionic-npm/issues \n',
+				result?.stderr.toString()
+			);
+			process.exit();
+		}
 	}
 
 	return opts;
@@ -278,30 +297,27 @@ export default config;
 	return str;
 }
 
-
 // TODO - this is for monorepos only, need to see everything that needs to be modified for monorepos
 // currently packages are automatically added as a workspace reference if in a mono
 function createViteConfig(opts) {
-
 	let filename = '';
 	if (opts.types == 'typescript') {
-		filename = 'vite.config.ts'
+		filename = 'vite.config.ts';
 	} else {
-		filename = 'vite.config.js'
+		filename = 'vite.config.js';
 	}
-	let vite = fs.readFileSync(filename)
+	let vite = fs.readFileSync(filename);
 	const insertString = `,
 	server: {
 		fs: {
 			allow: ['../../packages/skeleton/']
 		}
-	}`
-	const token = 'kit()]'
-	const insertPoint = vite.indexOf(token) + token.length
-	const str = vite.slice(0, insertPoint) + insertString + vite.slice(insertPoint)
-	fs.writeFileSync(filename, str)
+	}`;
+	const token = 'kit()]';
+	const insertPoint = vite.indexOf(token) + token.length;
+	const str = vite.slice(0, insertPoint) + insertString + vite.slice(insertPoint);
+	fs.writeFileSync(filename, str);
 }
-
 
 function createSvelteKitLayout(opts) {
 	const str = `<script${opts.types == 'typescript' ? ` lang='ts'` : ''}>

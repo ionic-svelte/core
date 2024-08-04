@@ -159,8 +159,7 @@
 			<ion-breadcrumbs
 				id="expand"
 				bind:this={expandBreadcrumb}
-				on:ionCollapsedClick={expandCollapsedClick}
-			>
+				on:ionCollapsedClick={expandCollapsedClick}>
 				<ion-breadcrumb href="#"> Home </ion-breadcrumb>
 				<ion-breadcrumb href="#electronics"> Electronics </ion-breadcrumb>
 				<ion-breadcrumb href="#photography"> Photography </ion-breadcrumb>
@@ -195,8 +194,7 @@
 				max-items={4}
 				id="popover"
 				bind:this={popoverBreadcrumb}
-				on:ionCollapsedClick={popoverCollapsedClick}
-			>
+				on:ionCollapsedClick={popoverCollapsedClick}>
 				<ion-breadcrumb href="#"> Home </ion-breadcrumb>
 				<ion-breadcrumb href="#electronics"> Electronics </ion-breadcrumb>
 				<ion-breadcrumb href="#photography"> Photography </ion-breadcrumb>
