@@ -11,7 +11,8 @@
 		lastName: z.string().min(2).default('')
 	});
 
-	const { form, errors, message, constraints, enhance, delayed, validate } = superForm(defaults(zod(userSchema)),
+	const { form, errors, message, constraints, enhance, delayed, validate } = superForm(
+		defaults(zod(userSchema)),
 		{
 			SPA: true,
 			validators: zod(userSchema),

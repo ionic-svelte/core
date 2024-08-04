@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## 0.5.86
 
 - added prettier and applied it to the files
+- create apps upgraded to latest versions of kit (not Svelte 5!)
 
 ## 0.5.85
 
