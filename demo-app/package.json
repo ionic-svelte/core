@@ -19,8 +19,8 @@
 		"doctoc": "doctoc README.md"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^1.0.1",
-		"@sveltejs/kit": "^1",
+		"@sveltejs/adapter-static": "^3",
+		"@sveltejs/kit": "^2",
 		"@typescript-eslint/eslint-plugin": "^6",
 		"@typescript-eslint/parser": "^6",
 		"eslint": "^8.28.0",
@@ -36,8 +36,8 @@
 		"sveltekit-superforms": "^1",
 		"tslib": "^2.4.1",
 		"typescript": "^5",
-		"vite": "^4",
-		"vite-plugin-pwa": "^0.14.1",
+		"vite": "^5",
+		"vite-plugin-pwa": "^0.20",
 		"zod": "^3.21.4"
 	},
 	"type": "module",
