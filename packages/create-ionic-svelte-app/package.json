@@ -1,6 +1,6 @@
 {
   "name": "create-ionic-svelte-app",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "Use this CLI app to setup a new Ionic application in a new SvelteKit project.",
   "keywords": [
     "ionic",
