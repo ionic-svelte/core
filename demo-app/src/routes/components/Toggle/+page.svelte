@@ -7,6 +7,13 @@
 	};
 </script>
 
+<style>
+	ion-label{
+		position: relative;
+		z-index: -10;
+	}
+</style>
+
 <IonPage>
 	<ion-header translucent={true}>
 		<ion-toolbar>

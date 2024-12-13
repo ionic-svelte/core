@@ -12,6 +12,13 @@
 	};
 </script>
 
+<style>
+	ion-label{
+		position: relative;
+		z-index: -10;
+	}
+</style>
+
 <svelte:head>
 	<title>Ionic Companion - Checkboxes</title>
 </svelte:head>
