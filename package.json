@@ -13,7 +13,8 @@
   "scripts": {
     "lint": "prettier  --check .",
     "format": "prettier --write .",
-    "build": "cd scripts/ && node generator.js && cd .. && npm run format"
+    "build": "cd scripts/ && node generator.js && cd .. && npm run format",
+    "github:npm_publish": "npm publish --provenance --access public"
   },
   "type": "module",
   "devDependencies": {

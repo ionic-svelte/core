@@ -2,7 +2,7 @@
 
 <a href="https://github.com/ionic-sveltekit/core#readme">
 	<picture>
-		<img src="assets/logo.png" alt="Ionic UI components with SvelteKit" style="max-width: 400px;" />
+		<img src="assets/logo.png" alt="Ionic UI components with SvelteKit" />
 	</picture>
 </a>
 
