@@ -1,4 +1,4 @@
-<a href="https://github.com/ionic-sveltekit/core#readme">
+<a href="https://github.com/ionic-sveltekit/core#readme" style="display: block;">
 	<picture>
 		<img src="assets/logo.png" alt="Ionic UI components with SvelteKit" />
 	</picture>
