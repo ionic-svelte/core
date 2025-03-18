@@ -218,7 +218,7 @@ export function testUserAgent(win: Window, expr: RegExp);
   // PART 2 - Code splitted imports
   //
   // create the module imports
-  let allImportsCode = '';
+  let allImportsCode = "";
 
   // Create an array to store all file write promises
   const fileWritePromises = [];
@@ -239,7 +239,7 @@ export function testUserAgent(win: Window, expr: RegExp);
 
   // Add the all.js file write to our promises array
   fileWritePromises.push(
-    writeFileAsync('../components/all.js', allImportsCode),
+    writeFileAsync("../components/all.js", allImportsCode),
   );
 
   // Wait for all file writes to complete
