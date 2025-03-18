@@ -15,6 +15,8 @@ const { promisify } = require("util"); // For converting callbacks to promises
 const writeFileAsync = promisify(fs.writeFile);
 const readFileAsync = promisify(fs.readFile);
 
+const packageName = "@ionic-sveltekit/core";
+
 const kebabize = (str) => {
   return str
     .split("")
@@ -216,7 +218,7 @@ export function testUserAgent(win: Window, expr: RegExp);
   // PART 2 - Code splitted imports
   //
   // create the module imports
-  let allImportsCode = ``;
+  let allImportsCode = '';
 
   // Create an array to store all file write promises
   const fileWritePromises = [];
@@ -227,8 +229,7 @@ export function testUserAgent(win: Window, expr: RegExp);
       const { tag } = component;
       const componentCode = `import { defineCustomElement } from '@ionic/core/components/${tag}';\ndefineCustomElement();`;
 
-      allImportsCode =
-        allImportsCode + `import 'ionic-svelte/components/${tag}';\n`;
+      allImportsCode += `import '${packageName}/components/${tag}';\n`;
 
       // Add each file write to our promises array
       fileWritePromises.push(
@@ -238,7 +239,7 @@ export function testUserAgent(win: Window, expr: RegExp);
 
   // Add the all.js file write to our promises array
   fileWritePromises.push(
-    writeFileAsync(`../components/all.js`, allImportsCode),
+    writeFileAsync('../components/all.js', allImportsCode),
   );
 
   // Wait for all file writes to complete
@@ -277,7 +278,6 @@ async function bumpPackageJson(version) {
   }
 
   const filePath = "../package.json";
-  const packageName = "ionic-svelte";
 
   try {
     const data = await readFileAsync(filePath, "utf-8");
@@ -389,10 +389,6 @@ async function main() {
 
           // Update package.json
           await bumpPackageJson(version);
-
-          // Optional: Uncomment these if needed
-          // await bumpCreatorPackages(version, '../packages/create-capacitor-svelte-app/src/creator.js');
-          // await bumpCreatorPackages(version, '../packages/create-ionic-svelte-app/src/creator.js');
 
           // Download the actual file
           const fileData = await downloadFile(
