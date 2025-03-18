@@ -1,6 +1,8 @@
-<a href="https://github.com/ionic-sveltekit/core#readme" style="display: block;">
+# Ionic SvelteKit
+
+<a href="https://github.com/ionic-sveltekit/core#readme">
 	<picture>
-		<img src="assets/logo.png" alt="Ionic UI components with SvelteKit" />
+		<img src="assets/logo.png" alt="Ionic UI components with SvelteKit" style="max-width: 400px;" />
 	</picture>
 </a>
 
