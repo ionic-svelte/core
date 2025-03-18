@@ -111,7 +111,6 @@ export {
   createGesture,
   iosTransitionAnimation,
   mdTransitionAnimation,
-  IonicSlides,
   getTimeGivenProgression,
 } from "@ionic/core/components";
 
@@ -134,13 +133,3 @@ export const registerMenu = (menuId: string): boolean => {
   }
   return !!menu;
 };
-
-// special component export
-// @ts-ignore
-export { default as IonTabs } from "./components/TabsEmpty.svelte";
-// @ts-ignore
-// export { default as IonTabsLegacy } from "./components/IonTabsLegacy.svelte";
-// @ts-ignore
-export { default as IonPage } from "./components/PageEmpty.svelte";
-// @ts-ignore
-export { default as IonNav } from "./components/NavEmpty.svelte";
