@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-row';
+import { defineCustomElement } from "@ionic/core/components/ion-row";
 defineCustomElement();

@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-refresher';
+import { defineCustomElement } from "@ionic/core/components/ion-refresher";
 defineCustomElement();

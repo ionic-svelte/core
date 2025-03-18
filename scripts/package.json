@@ -1,5 +1,5 @@
 {
-	"dependencies": {
-		"https": "^1.0.0"
-	}
+  "dependencies": {
+    "https": "^1.0.0"
+  }
 }

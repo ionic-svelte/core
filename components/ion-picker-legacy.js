@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-picker-legacy';
+import { defineCustomElement } from "@ionic/core/components/ion-picker-legacy";
 defineCustomElement();

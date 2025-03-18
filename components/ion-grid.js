@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-grid';
+import { defineCustomElement } from "@ionic/core/components/ion-grid";
 defineCustomElement();

@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-reorder';
+import { defineCustomElement } from "@ionic/core/components/ion-reorder";
 defineCustomElement();

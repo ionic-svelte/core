@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-skeleton-text';
+import { defineCustomElement } from "@ionic/core/components/ion-skeleton-text";
 defineCustomElement();

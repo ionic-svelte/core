@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-radio-group';
+import { defineCustomElement } from "@ionic/core/components/ion-radio-group";
 defineCustomElement();

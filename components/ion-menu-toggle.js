@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-menu-toggle';
+import { defineCustomElement } from "@ionic/core/components/ion-menu-toggle";
 defineCustomElement();

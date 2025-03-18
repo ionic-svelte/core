@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-fab-button';
+import { defineCustomElement } from "@ionic/core/components/ion-fab-button";
 defineCustomElement();
