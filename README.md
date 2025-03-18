@@ -34,4 +34,4 @@ Thank you, Tom!
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT](LICENSE)
