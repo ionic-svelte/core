@@ -1,38 +1,37 @@
 {
-	"name": "ionic-svelte",
-	"version": "0.5.85",
-	"private": false,
-	"homepage": "https://ionic-svelte.firebaseapp.com",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Tommertom/svelte-ionic-app.git"
-	},
-	"keywords": [
-		"ui library",
-		"ui",
-		"ionic",
-		"svelte",
-		"sveltekit",
-		"vite"
-	],
-	"main": "index.ts",
-	"module": "index.ts",
-	"types": "index.d.ts",
-	"bugs": {
-		"url": "https://github.com/Tommertom/svelte-ionic-app/issues"
-	},
-	"description": "The NPM library to implement Ionic in any Svelte project - supporting SvelteKit and Svelte with Vite",
-	"scripts": {
-		"lint": "prettier  --check . && eslint .",
-		"format": "prettier --write ."
-	},
-	"type": "module",
-	"devDependencies": {
-		"prettier-plugin-svelte": "^3.2.6",
-		"svelte": "^4.0.5"
-	},
-	"dependencies": {
-		"@ionic/core": "^8.2.2",
-		"swiper": "^9.2.4"
-	}
+  "name": "@ionic-sveltekit/core",
+  "description": "Ionic UI components with SvelteKit",
+  "version": "0.0.1",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-sveltekit/core.git"
+  },
+  "main": "index.ts",
+  "module": "index.ts",
+  "types": "index.d.ts",
+  "scripts": {
+    "lint": "prettier  --check .",
+    "format": "prettier --write .",
+    "build": "cd scripts/ && node generator.js && cd .. && npm run format"
+  },
+  "type": "module",
+  "devDependencies": {
+    "prettier-plugin-svelte": "^3.2.6",
+    "svelte": "^5.20.5"
+  },
+  "dependencies": {
+    "@ionic/core": "^8.2.2"
+  },
+  "bugs": {
+    "url": "https://github.com/ionic-sveltekit/core/issues"
+  },
+  "homepage": "https://github.com/ionic-sveltekit/core#readme",
+  "keywords": [
+    "Ionic",
+    "SvelteKit",
+    "components",
+    "framework components",
+    "ionic-sveltekit"
+  ]
 }
