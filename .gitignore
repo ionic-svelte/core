@@ -8,5 +8,4 @@ dist
 !.env.example
 .firebase
 .npmrc
-package-lock.json
 yarn.lock
