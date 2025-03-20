@@ -17,6 +17,12 @@
     "github:npm_publish": "npm publish --provenance --access public"
   },
   "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Brad Mallow",
+    "email": "brad.mallow@gmail.com",
+    "url": "https://bradmallow.com"
+  },
   "devDependencies": {
     "prettier-plugin-svelte": "^3.2.6",
     "svelte": "^5.20.5"
