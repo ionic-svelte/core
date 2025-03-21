@@ -10,7 +10,12 @@
 
 ## Get Started
 
-[COMING SOON]
+The easiest way to create a new Ionic SvelteKit project is by using the [@ionic-sveltekit/create](https://github.com/ionic-sveltekit/create#readme) interactive CLI tool:
+
+```bash
+npx @ionic-sveltekit/create
+```
+View the [@ionic-sveltekit/create documentation](https://github.com/ionic-sveltekit/create#readme) for a full list of options.
 
 ## What is Ionic SvelteKit
 
