@@ -7,7 +7,7 @@
 </p>
 <br>
 <p align="center">
-  A library to include Ionic in your Svelte and SvelteKit app 
+  A library to include Ionic in your Svelte and SvelteKit app
 </p>
 <br>
 
@@ -51,7 +51,7 @@ npm install
 
 We need adapter static + `ssr=false`, because Ionic package cannot run in SSR=true.
 
-I am chosing to deploy via adapter-static (to Firebase hosting), but if you deploy to Cloudflare, Vercel or Netflify you can opt to do differently. I checked with Vercel and that works still very well.
+I am choosing to deploy via adapter-static (to Firebase hosting), but if you deploy to Cloudflare, Vercel or Netflify you can opt to do differently. I checked with Vercel and that works still very well.
 
 - `npm i -D @sveltejs/adapter-static`
 - `import adapter from '@sveltejs/adapter-static'` in `svelte.config.js`
