@@ -7,6 +7,13 @@
 	};
 </script>
 
+<style>
+	ion-label{
+		position: relative;
+		z-index: -10;
+	}
+</style>
+
 <svelte:head>
 	<title>Ionic Companion - Radios</title>
 </svelte:head>
