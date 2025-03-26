@@ -10,9 +10,9 @@
 	export let slot = 'bottom';
 
 	/**
-    An array of tab objects containing label, icon, and tab properties.
-    @type {{label: string; icon: string; tab: string;}[]}
-    */
+		An array of tab objects containing label, icon, and tab properties.
+		@type {{label: string; icon: string; tab: string;}[]}
+	*/
 	export let tabs = [];
 
 	let ionTabBarElement;
