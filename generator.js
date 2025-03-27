@@ -193,10 +193,20 @@ async function generateIndexFile() {
   indexCode += `import '@ionic/core/css/flex-utils.css';\n`;
   indexCode += `import '@ionic/core/css/display.css';\n\n`;
 
+  // import Ionic initialize function
+  indexCode += `import { initialize as ionicInit } from "@ionic/core/components";\n\n`;
+
   // Export initialize function
-  indexCode += `export { initialize } from "@ionic/core/components";\n`;
+  indexCode += `export function initialize(config) {\n`;
+  indexCode += `  ionicInit(config)\n`;
+  indexCode += `\n`;
+  indexCode += `  if (typeof document !== "undefined") {\n`;
+  indexCode += `    document.documentElement.classList.add("ion-ce");\n`;
+  indexCode += `  }\n`;
+  indexCode += `}\n\n`;
 
   await fs.writeFile(path.join(OUTPUT_DIR, 'index.js'), indexCode);
+
   console.log('Generated index.js with initialization function');
 
   return indexCode;
