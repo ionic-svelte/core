@@ -7,14 +7,17 @@
     "type": "git",
     "url": "git+https://github.com/ionic-sveltekit/core.git"
   },
-  "main": "index.ts",
-  "module": "index.ts",
-  "types": "index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
   "scripts": {
-    "lint": "prettier  --check .",
-    "format": "prettier --write .",
-    "build": "cd scripts/ && node generator.js && cd .. && npm run format",
-    "github:npm_publish": "npm publish --provenance --access public"
+    "clean": "if [ -d dist ]; then rm -Rf dist; fi",
+    "build": "npm run clean && node generator.js",
+    "github:npm_publish": "npm run build && npm publish --provenance --access public"
   },
   "type": "module",
   "license": "MIT",
@@ -23,12 +26,15 @@
     "email": "brad.mallow@gmail.com",
     "url": "https://bradmallow.com"
   },
-  "devDependencies": {
-    "prettier-plugin-svelte": "^3.2.6",
-    "svelte": "^5.20.5"
-  },
   "dependencies": {
-    "@ionic/core": "^8.2.2"
+    "@ionic/core": "^8.5.2"
+  },
+  "peerDependencies": {
+    "@ionic/core": "^8.5.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "undici": "^5.0.0"
   },
   "bugs": {
     "url": "https://github.com/ionic-sveltekit/core/issues"
@@ -36,8 +42,10 @@
   "homepage": "https://github.com/ionic-sveltekit/core#readme",
   "keywords": [
     "Ionic",
+    "Svelte",
     "SvelteKit",
     "components",
+    "web components",
     "framework components",
     "ionic-sveltekit"
   ]
