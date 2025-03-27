@@ -203,6 +203,20 @@ async function generateIndexFile() {
 }
 
 /**
+ * Generates TypeScript definition file for index.js
+ * @returns {string} TypeScript definition content
+ */
+async function generateIndexDefs() {
+  let indexDefs = `// Type definitions for Ionic Web Components\n\n`;
+
+  indexDefs += `export { initialize } from "@ionic/core/components";\n`;
+
+  await fs.writeFile(path.join(OUTPUT_DIR, 'index.d.ts'), indexDefs);
+
+  console.log('Generated index.d.ts with initialization function types');
+}
+
+/**
  * Main function to process the Ionic components and generate files
  */
 async function main() {
@@ -219,6 +233,9 @@ async function main() {
 
     // Generate the main index.js file
     await generateIndexFile();
+
+    // Generate TypeScript definitions
+    await generateIndexDefs();
 
     // Update root package.json with the detected version
     await updatePackageJson(version);
