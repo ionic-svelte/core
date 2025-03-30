@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-toolbar';
+import { defineCustomElement } from "@ionic/core/components/ion-toolbar";
 defineCustomElement();

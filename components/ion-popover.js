@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-popover';
+import { defineCustomElement } from "@ionic/core/components/ion-popover";
 defineCustomElement();

@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-badge';
+import { defineCustomElement } from "@ionic/core/components/ion-badge";
 defineCustomElement();

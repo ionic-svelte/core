@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-chip';
+import { defineCustomElement } from "@ionic/core/components/ion-chip";
 defineCustomElement();

@@ -247,7 +247,7 @@ export function testUserAgent(win: Window, expr: RegExp);
 
     console.log("Writing to index.d.ts and components/*.js files");
     console.log(
-      "Do us a favor - open index.d.ts and pretty save it in your editor!"
+      "Do us a favor - open index.d.ts and pretty save it in your editor!",
     );
 
     // Add a slight delay to ensure all file operations complete
@@ -276,7 +276,7 @@ function doHTTPstuff() {
             // Redirect detected
             const redirectUrl = new URL(
               res.headers.location,
-              "https://unpkg.com"
+              "https://unpkg.com",
             ).href;
             console.log(`Redirected to: ${redirectUrl}`);
 
@@ -294,7 +294,8 @@ function doHTTPstuff() {
                     const jsonData = JSON.parse(data);
                     console.log("JSON data received:");
                     console.log(
-                      JSON.stringify(jsonData, null, 2).substring(0, 80) + "..."
+                      JSON.stringify(jsonData, null, 2).substring(0, 80) +
+                        "...",
                     );
                     console.log(`Total length: ${data.length} characters`);
 
@@ -323,7 +324,7 @@ function doHTTPstuff() {
                 const jsonData = JSON.parse(data);
                 console.log("JSON data received:");
                 console.log(
-                  JSON.stringify(jsonData, null, 2).substring(0, 500) + "..."
+                  JSON.stringify(jsonData, null, 2).substring(0, 500) + "...",
                 );
                 console.log(`Total length: ${data.length} characters`);
 

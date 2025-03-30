@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-spinner';
+import { defineCustomElement } from "@ionic/core/components/ion-spinner";
 defineCustomElement();

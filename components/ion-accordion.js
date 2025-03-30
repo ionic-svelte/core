@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-accordion';
+import { defineCustomElement } from "@ionic/core/components/ion-accordion";
 defineCustomElement();

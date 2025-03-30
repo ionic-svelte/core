@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-router-outlet';
+import { defineCustomElement } from "@ionic/core/components/ion-router-outlet";
 defineCustomElement();

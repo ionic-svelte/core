@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-header';
+import { defineCustomElement } from "@ionic/core/components/ion-header";
 defineCustomElement();

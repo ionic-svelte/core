@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-checkbox';
+import { defineCustomElement } from "@ionic/core/components/ion-checkbox";
 defineCustomElement();

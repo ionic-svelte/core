@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-textarea';
+import { defineCustomElement } from "@ionic/core/components/ion-textarea";
 defineCustomElement();

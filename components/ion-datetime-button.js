@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-datetime-button';
+import { defineCustomElement } from "@ionic/core/components/ion-datetime-button";
 defineCustomElement();

@@ -1,2 +1,2 @@
-import { defineCustomElement } from '@ionic/core/components/ion-card-title';
+import { defineCustomElement } from "@ionic/core/components/ion-card-title";
 defineCustomElement();
