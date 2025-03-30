@@ -1,4 +1,4 @@
-<h1> BIG OVERHAUL ONGOING </h1>
+<h1> BIG OVERHAUL ONGOING  (March, 30 - 2025)</h1>
 The repo is undergoing big overhaul into separate repos under the ionic-svelte organisation.
 Some things might break because of this
 
