@@ -1,11 +1,11 @@
 {
   "name": "ionic-svelte",
-  "version": "0.5.85",
+  "version": "0.5.86",
   "private": false,
   "homepage": "https://ionic-svelte.firebaseapp.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tommertom/svelte-ionic-app.git"
+    "url": "https://github.com/ionic-svelte/core"
   },
   "keywords": [
     "ui library",
@@ -19,7 +19,7 @@
   "module": "index.ts",
   "types": "index.d.ts",
   "bugs": {
-    "url": "https://github.com/Tommertom/svelte-ionic-app/issues"
+    "url": "https://github.com/ionic-svelte/core/issues"
   },
   "description": "The NPM library to implement Ionic in any Svelte project - supporting SvelteKit and Svelte with Vite",
   "scripts": {
@@ -32,7 +32,7 @@
     "svelte": "^4.0.5"
   },
   "dependencies": {
-    "@ionic/core": "^8.2.2",
+    "@ionic/core": "^8.5.2",
     "swiper": "^9.2.4"
   }
 }

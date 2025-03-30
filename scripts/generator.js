@@ -1,15 +1,10 @@
-// todo - using https://unpkg.com/@ionic/docs@6.3.8/core.json
-// todo - using https://unpkg.com/@ionic/docs@6.4.2/core.json
-// todo - using https://unpkg.com/@ionic/docs@6.5.3/core.json
-
-// using https://unpkg.com/@ionic/docs@6.6.0/core.json
-// using https://unpkg.com/@ionic/docs@7.0.2/core.json
-// using https://unpkg.com/@ionic/docs@7.0.3/core.json
-// using https://unpkg.com/@ionic/docs@8.2.2/core.json
 // using https://unpkg.com/@ionic/docs@8.5.2/core.json
-
 import fs from "fs";
-import https from "https";
+
+function loadCoreJson() {
+  const coreJson = fs.readFileSync("./core.json", "utf8");
+  return JSON.parse(coreJson);
+}
 
 const kebabize = (str) => {
   return str
@@ -31,14 +26,18 @@ function clearAndUpper(text) {
 }
 
 const doStuff = () => {
-  // load static
-  const coreJson = require("./core.json");
+  // console log what this script is doing
+  console.log("Generating typings and components imports");
+  console.log("Loading core.json from Ionic Core");
+  console.log("Generating typings and components imports");
 
   var dir = "./generated";
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
+
+  const coreJson = loadCoreJson();
 
   const { components } = coreJson;
 
@@ -196,8 +195,8 @@ export function testUserAgent(win: Window, expr: RegExp);
         * (event : ${event.detail}) => void :  ${event.docs.replace(/\n/g, " ")}
         */
         "on:${event.event}"?: (event : CustomEvent<${
-                event.detail
-              }> & { target: ${htmlElementType} } ) => void;
+          event.detail
+        }> & { target: ${htmlElementType} } ) => void;
       `
             : `
       /**
@@ -246,7 +245,11 @@ export function testUserAgent(win: Window, expr: RegExp);
   fs.writeFile(`../components/all.js`, allImportsCode, function (err) {
     if (err) return console.log(err);
   });
+
+  console.log("Writing to index.d.ts and components/*.js files");
+  console.log(
+    "Do us a favor - open index.d.ts and pretty save it in your editor!"
+  );
 };
 
 doStuff();
-console.log("done!");
