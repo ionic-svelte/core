@@ -40,6 +40,7 @@ export const modalController = {
     );
 
     return Promise.resolve(
+      //@ts-ignore
       modalController.__create(modalOptions.component, modalOptions),
     ) as Promise<HTMLIonModalElement>;
   },
@@ -70,6 +71,7 @@ export const modalController = {
     Object.keys(modalOptions)
       .filter((key) => !["component", "componentProps"].includes(key))
       .forEach((key) => {
+        //@ts-ignore
         modalWrapper[key] = modalOptions[key];
       });
 
@@ -103,6 +105,7 @@ export const popoverController = {
   create: (popoverOptions: PopoverOptions): Promise<HTMLIonPopoverElement> => {
     // @ts-ignore - issue with popoverOptions.component not matching
     return Promise.resolve(
+      //@ts-ignore
       popoverController.__create(popoverOptions.component, popoverOptions),
     ) as Promise<HTMLIonPopoverElement>;
   },
@@ -135,6 +138,7 @@ export const popoverController = {
     Object.keys(popoverOptions)
       .filter((key) => !["component", "componentProps"].includes(key))
       .forEach((key) => {
+        //@ts-ignore
         popoverWrapper[key] = popoverOptions[key];
       });
 

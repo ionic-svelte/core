@@ -1,3 +1,4 @@
+//@ts-ignore
 import { config } from "@ionic/core/dist/collection/global/config";
 import { readable } from "svelte/store";
 
@@ -192,7 +193,7 @@ const readableEventFactory = (args: {
 }) => {
   const { defaultvalue, event, eventAttr, listenerComponent } = args;
   return readable(defaultvalue, (set) => {
-    const eventFunction = (event) => {
+    const eventFunction = (event: any) => {
       if (eventAttr) set(event[eventAttr]);
       else set(event);
     };
@@ -349,6 +350,6 @@ if (typeof window !== "undefined")
     .addEventListener("change", (e) => {
       prefersDark.set(e.matches ? true : false);
     });
-export const toggleDarkTheme = (shouldAdd) => {
+export const toggleDarkTheme = (shouldAdd: any) => {
   if (_doc) document.body.classList.toggle("dark", shouldAdd);
 };

@@ -225,7 +225,7 @@ Should become:
 
 ```
 <script lang="ts">
-	import { setupIonicBase } from 'ionic-svelte';
+	import { setupIonicBase } from '@ionic-svelte/core';
 
 	/* Call Ionic's setup routine */
 	setupIonicBase();

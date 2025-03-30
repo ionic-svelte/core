@@ -1,8 +1,10 @@
 // using https://unpkg.com/@ionic/docs@8.5.2/core.json
 import fs from "fs";
 
+const core_dir = "scripts/core.json";
+
 function loadCoreJson() {
-  const coreJson = fs.readFileSync("./core.json", "utf8");
+  const coreJson = fs.readFileSync(core_dir, "utf8");
   return JSON.parse(coreJson);
 }
 
@@ -31,11 +33,11 @@ const doStuff = () => {
   console.log("Loading core.json from Ionic Core");
   console.log("Generating typings and components imports");
 
-  var dir = "./generated";
+  // var dir = "./generated";
 
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-  }
+  // if (!fs.existsSync(dir)) {
+  //   fs.mkdirSync(dir);
+  // }
 
   const coreJson = loadCoreJson();
 
@@ -279,6 +281,7 @@ function doHTTPstuff() {
               "https://unpkg.com",
             ).href;
             console.log(`Redirected to: ${redirectUrl}`);
+            console.log("Replace the versions for the generator scripts");
 
             // Follow the redirect
             https
@@ -300,7 +303,7 @@ function doHTTPstuff() {
                     console.log(`Total length: ${data.length} characters`);
 
                     // Optionally write to file
-                    fs.writeFileSync("./core.json", data);
+                    fs.writeFileSync(core_dir, data);
                     console.log("Data saved to core.json file");
                     doStuff(); // Add this line to call doStuff() after the redirect path completes
                   } catch (error) {
@@ -329,7 +332,7 @@ function doHTTPstuff() {
                 console.log(`Total length: ${data.length} characters`);
 
                 // Optionally write to file
-                fs.writeFileSync("./core.json", data);
+                fs.writeFileSync(core_dir, data);
                 console.log("Data saved to core.json file");
                 doStuff();
               } catch (error) {

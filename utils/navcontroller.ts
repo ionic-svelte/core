@@ -90,7 +90,9 @@ export const navController = {
             : {
                 //@ts-ignore
                 component: createHTMLCompFromSvelte(
+                  //@ts-ignore
                   component["component"],
+                  //@ts-ignore
                   component["componentProps"],
                 ),
                 //@ts-ignore
@@ -167,7 +169,9 @@ export const navController = {
           : {
               //@ts-ignore
               component: createHTMLCompFromSvelte(
+                //@ts-ignore
                 component["component"],
+                //@ts-ignore
                 component["componentProps"],
               ),
               //@ts-ignore

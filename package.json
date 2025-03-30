@@ -1,6 +1,6 @@
 {
   "name": "@ionic-svelte/core",
-  "version": "0.5.86",
+  "version": "0.6.1",
   "private": false,
   "homepage": "https://ionic-svelte.firebaseapp.com",
   "repository": {
@@ -20,6 +20,9 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "bugs": {
     "url": "https://github.com/ionic-svelte/core/issues"
   },
@@ -27,8 +30,10 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "prettier --check . && eslint .",
-    "build": "prettier --write . && npm publish --access public"
+    "build": "tsc && vite build",
+    "prettier": "prettier --write .",
+    "generator": "node ./scripts/generator.js",
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "prettier-plugin-svelte": "^3.2.6",

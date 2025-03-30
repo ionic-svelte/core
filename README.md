@@ -81,7 +81,7 @@ Integration of Ionic
 
 ```
 <script lang="ts">
-	import { setupIonicBase } from 'ionic-svelte';
+	import { setupIonicBase } from '@ionic-svelte/core';
 
 	/* Theme variables */
 	import '../theme/variables.css';
