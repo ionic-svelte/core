@@ -205,9 +205,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon"],
+      "dependencies": [
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-accordion": ["ion-icon"]
+        "ion-accordion": [
+          "ion-icon"
+        ]
       }
     },
     {
@@ -1354,11 +1358,23 @@
       ],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select"],
-      "dependencies": ["ion-backdrop", "ion-icon", "ion-ripple-effect"],
+      "dependents": [
+        "ion-select"
+      ],
+      "dependencies": [
+        "ion-backdrop",
+        "ion-icon",
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-action-sheet": ["ion-backdrop", "ion-icon", "ion-ripple-effect"],
-        "ion-select": ["ion-action-sheet"]
+        "ion-action-sheet": [
+          "ion-backdrop",
+          "ion-icon",
+          "ion-ripple-effect"
+        ],
+        "ion-select": [
+          "ion-action-sheet"
+        ]
       }
     },
     {
@@ -2165,11 +2181,21 @@
       ],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select"],
-      "dependencies": ["ion-ripple-effect", "ion-backdrop"],
+      "dependents": [
+        "ion-select"
+      ],
+      "dependencies": [
+        "ion-ripple-effect",
+        "ion-backdrop"
+      ],
       "dependencyGraph": {
-        "ion-alert": ["ion-ripple-effect", "ion-backdrop"],
-        "ion-select": ["ion-alert"]
+        "ion-alert": [
+          "ion-ripple-effect",
+          "ion-backdrop"
+        ],
+        "ion-select": [
+          "ion-alert"
+        ]
       }
     },
     {
@@ -2938,9 +2964,15 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon", "ion-ripple-effect"],
+      "dependencies": [
+        "ion-icon",
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-back-button": ["ion-icon", "ion-ripple-effect"]
+        "ion-back-button": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -3056,13 +3088,27 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-action-sheet": ["ion-backdrop"],
-        "ion-alert": ["ion-backdrop"],
-        "ion-loading": ["ion-backdrop"],
-        "ion-menu": ["ion-backdrop"],
-        "ion-modal": ["ion-backdrop"],
-        "ion-picker-legacy": ["ion-backdrop"],
-        "ion-popover": ["ion-backdrop"]
+        "ion-action-sheet": [
+          "ion-backdrop"
+        ],
+        "ion-alert": [
+          "ion-backdrop"
+        ],
+        "ion-loading": [
+          "ion-backdrop"
+        ],
+        "ion-menu": [
+          "ion-backdrop"
+        ],
+        "ion-modal": [
+          "ion-backdrop"
+        ],
+        "ion-picker-legacy": [
+          "ion-backdrop"
+        ],
+        "ion-popover": [
+          "ion-backdrop"
+        ]
       }
     },
     {
@@ -3702,9 +3748,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon"],
+      "dependencies": [
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-breadcrumb": ["ion-icon"]
+        "ion-breadcrumb": [
+          "ion-icon"
+        ]
       }
     },
     {
@@ -4788,12 +4838,22 @@
         "ion-input-password-toggle",
         "ion-select-modal"
       ],
-      "dependencies": ["ion-ripple-effect"],
+      "dependencies": [
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-button": ["ion-ripple-effect"],
-        "ion-datetime": ["ion-button"],
-        "ion-input-password-toggle": ["ion-button"],
-        "ion-select-modal": ["ion-button"]
+        "ion-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-datetime": [
+          "ion-button"
+        ],
+        "ion-input-password-toggle": [
+          "ion-button"
+        ],
+        "ion-select-modal": [
+          "ion-button"
+        ]
       }
     },
     {
@@ -4833,11 +4893,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-datetime", "ion-select-modal"],
+      "dependents": [
+        "ion-datetime",
+        "ion-select-modal"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-datetime": ["ion-buttons"],
-        "ion-select-modal": ["ion-buttons"]
+        "ion-datetime": [
+          "ion-buttons"
+        ],
+        "ion-select-modal": [
+          "ion-buttons"
+        ]
       }
     },
     {
@@ -5219,9 +5286,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-ripple-effect"],
+      "dependencies": [
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-card": ["ion-ripple-effect"]
+        "ion-card": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -6274,11 +6345,18 @@
           "docs": "Supporting text displayed beneath the checkbox label."
         }
       ],
-      "dependents": ["ion-select-modal", "ion-select-popover"],
+      "dependents": [
+        "ion-select-modal",
+        "ion-select-popover"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-checkbox"],
-        "ion-select-popover": ["ion-checkbox"]
+        "ion-select-modal": [
+          "ion-checkbox"
+        ],
+        "ion-select-popover": [
+          "ion-checkbox"
+        ]
       }
     },
     {
@@ -6458,9 +6536,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-ripple-effect"],
+      "dependencies": [
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-chip": ["ion-ripple-effect"]
+        "ion-chip": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -7709,10 +7791,14 @@
           "docs": "The scrollable container of the content."
         }
       ],
-      "dependents": ["ion-select-modal"],
+      "dependents": [
+        "ion-select-modal"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-content"]
+        "ion-select-modal": [
+          "ion-content"
+        ]
       }
     },
     {
@@ -8971,8 +9057,12 @@
           "ion-ripple-effect",
           "ion-popover"
         ],
-        "ion-button": ["ion-ripple-effect"],
-        "ion-popover": ["ion-backdrop"]
+        "ion-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-popover": [
+          "ion-backdrop"
+        ]
       }
     },
     {
@@ -9156,9 +9246,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-ripple-effect"],
+      "dependencies": [
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-datetime-button": ["ion-ripple-effect"]
+        "ion-datetime-button": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -10072,9 +10166,15 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon", "ion-ripple-effect"],
+      "dependencies": [
+        "ion-icon",
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-fab-button": ["ion-icon", "ion-ripple-effect"]
+        "ion-fab-button": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -10439,10 +10539,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select-modal"],
+      "dependents": [
+        "ion-select-modal"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-header"]
+        "ion-select-modal": [
+          "ion-header"
+        ]
       }
     },
     {
@@ -10808,9 +10912,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-spinner"],
+      "dependencies": [
+        "ion-spinner"
+      ],
       "dependencyGraph": {
-        "ion-infinite-scroll-content": ["ion-spinner"]
+        "ion-infinite-scroll-content": [
+          "ion-spinner"
+        ]
       }
     },
     {
@@ -12421,9 +12529,13 @@
       ],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-icon"],
+      "dependencies": [
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-input": ["ion-icon"]
+        "ion-input": [
+          "ion-icon"
+        ]
       }
     },
     {
@@ -12582,10 +12694,18 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-button", "ion-icon"],
+      "dependencies": [
+        "ion-button",
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-input-password-toggle": ["ion-button", "ion-icon"],
-        "ion-button": ["ion-ripple-effect"]
+        "ion-input-password-toggle": [
+          "ion-button",
+          "ion-icon"
+        ],
+        "ion-button": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -13437,12 +13557,25 @@
           "docs": "The native HTML button, anchor or div element that wraps all child elements."
         }
       ],
-      "dependents": ["ion-select-modal", "ion-select-popover"],
-      "dependencies": ["ion-icon", "ion-ripple-effect"],
+      "dependents": [
+        "ion-select-modal",
+        "ion-select-popover"
+      ],
+      "dependencies": [
+        "ion-icon",
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-item": ["ion-icon", "ion-ripple-effect"],
-        "ion-select-modal": ["ion-item"],
-        "ion-select-popover": ["ion-item"]
+        "ion-item": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ],
+        "ion-select-modal": [
+          "ion-item"
+        ],
+        "ion-select-popover": [
+          "ion-item"
+        ]
       }
     },
     {
@@ -14104,9 +14237,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-ripple-effect"],
+      "dependencies": [
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-item-option": ["ion-ripple-effect"]
+        "ion-item-option": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -14518,10 +14655,14 @@
       ],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select-popover"],
+      "dependents": [
+        "ion-select-popover"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-popover": ["ion-label"]
+        "ion-select-popover": [
+          "ion-label"
+        ]
       }
     },
     {
@@ -14643,11 +14784,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select-modal", "ion-select-popover"],
+      "dependents": [
+        "ion-select-modal",
+        "ion-select-popover"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-list"],
-        "ion-select-popover": ["ion-list"]
+        "ion-select-modal": [
+          "ion-list"
+        ],
+        "ion-select-popover": [
+          "ion-list"
+        ]
       }
     },
     {
@@ -14863,10 +15011,14 @@
       ],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select-popover"],
+      "dependents": [
+        "ion-select-popover"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-popover": ["ion-list-header"]
+        "ion-select-popover": [
+          "ion-list-header"
+        ]
       }
     },
     {
@@ -15680,9 +15832,15 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-backdrop", "ion-spinner"],
+      "dependencies": [
+        "ion-backdrop",
+        "ion-spinner"
+      ],
       "dependencyGraph": {
-        "ion-loading": ["ion-backdrop", "ion-spinner"]
+        "ion-loading": [
+          "ion-backdrop",
+          "ion-spinner"
+        ]
       }
     },
     {
@@ -16282,9 +16440,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-backdrop"],
+      "dependencies": [
+        "ion-backdrop"
+      ],
       "dependencyGraph": {
-        "ion-menu": ["ion-backdrop"]
+        "ion-menu": [
+          "ion-backdrop"
+        ]
       }
     },
     {
@@ -16681,9 +16843,15 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon", "ion-ripple-effect"],
+      "dependencies": [
+        "ion-icon",
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-menu-button": ["ion-icon", "ion-ripple-effect"]
+        "ion-menu-button": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -17824,11 +17992,19 @@
           "docs": "The handle that is displayed at the top of the sheet modal when `handle=\"true\"`."
         }
       ],
-      "dependents": ["ion-select"],
-      "dependencies": ["ion-backdrop"],
+      "dependents": [
+        "ion-select"
+      ],
+      "dependencies": [
+        "ion-backdrop"
+      ],
       "dependencyGraph": {
-        "ion-modal": ["ion-backdrop"],
-        "ion-select": ["ion-modal"]
+        "ion-modal": [
+          "ion-backdrop"
+        ],
+        "ion-select": [
+          "ion-modal"
+        ]
       }
     },
     {
@@ -19392,10 +19568,14 @@
       ],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-datetime"],
+      "dependents": [
+        "ion-datetime"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-datetime": ["ion-picker"]
+        "ion-datetime": [
+          "ion-picker"
+        ]
       }
     },
     {
@@ -19616,10 +19796,14 @@
         }
       ],
       "parts": [],
-      "dependents": ["ion-datetime"],
+      "dependents": [
+        "ion-datetime"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-datetime": ["ion-picker-column"]
+        "ion-datetime": [
+          "ion-picker-column"
+        ]
       }
     },
     {
@@ -19747,10 +19931,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-datetime"],
+      "dependents": [
+        "ion-datetime"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-datetime": ["ion-picker-column-option"]
+        "ion-datetime": [
+          "ion-picker-column-option"
+        ]
       }
     },
     {
@@ -20589,9 +20777,15 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-backdrop", "ion-picker-legacy-column"],
+      "dependencies": [
+        "ion-backdrop",
+        "ion-picker-legacy-column"
+      ],
       "dependencyGraph": {
-        "ion-picker-legacy": ["ion-backdrop", "ion-picker-legacy-column"]
+        "ion-picker-legacy": [
+          "ion-backdrop",
+          "ion-picker-legacy-column"
+        ]
       }
     },
     {
@@ -21732,12 +21926,23 @@
           "docs": "The wrapper element for the default slot."
         }
       ],
-      "dependents": ["ion-datetime", "ion-select"],
-      "dependencies": ["ion-backdrop"],
+      "dependents": [
+        "ion-datetime",
+        "ion-select"
+      ],
+      "dependencies": [
+        "ion-backdrop"
+      ],
       "dependencyGraph": {
-        "ion-popover": ["ion-backdrop"],
-        "ion-datetime": ["ion-popover"],
-        "ion-select": ["ion-popover"]
+        "ion-popover": [
+          "ion-backdrop"
+        ],
+        "ion-datetime": [
+          "ion-popover"
+        ],
+        "ion-select": [
+          "ion-popover"
+        ]
       }
     },
     {
@@ -22375,11 +22580,18 @@
           "docs": "The checkmark or dot used to indicate the checked state."
         }
       ],
-      "dependents": ["ion-select-modal", "ion-select-popover"],
+      "dependents": [
+        "ion-select-modal",
+        "ion-select-popover"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-radio"],
-        "ion-select-popover": ["ion-radio"]
+        "ion-select-modal": [
+          "ion-radio"
+        ],
+        "ion-select-popover": [
+          "ion-radio"
+        ]
       }
     },
     {
@@ -22574,11 +22786,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select-modal", "ion-select-popover"],
+      "dependents": [
+        "ion-select-modal",
+        "ion-select-popover"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-radio-group"],
-        "ion-select-popover": ["ion-radio-group"]
+        "ion-select-modal": [
+          "ion-radio-group"
+        ],
+        "ion-select-popover": [
+          "ion-radio-group"
+        ]
       }
     },
     {
@@ -23856,9 +24075,15 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-spinner", "ion-icon"],
+      "dependencies": [
+        "ion-spinner",
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-refresher-content": ["ion-spinner", "ion-icon"]
+        "ion-refresher-content": [
+          "ion-spinner",
+          "ion-icon"
+        ]
       }
     },
     {
@@ -23892,9 +24117,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon"],
+      "dependencies": [
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-reorder": ["ion-icon"]
+        "ion-reorder": [
+          "ion-icon"
+        ]
       }
     },
     {
@@ -24114,21 +24343,51 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-action-sheet": ["ion-ripple-effect"],
-        "ion-alert": ["ion-ripple-effect"],
-        "ion-back-button": ["ion-ripple-effect"],
-        "ion-button": ["ion-ripple-effect"],
-        "ion-card": ["ion-ripple-effect"],
-        "ion-chip": ["ion-ripple-effect"],
-        "ion-datetime": ["ion-ripple-effect"],
-        "ion-datetime-button": ["ion-ripple-effect"],
-        "ion-fab-button": ["ion-ripple-effect"],
-        "ion-item": ["ion-ripple-effect"],
-        "ion-item-option": ["ion-ripple-effect"],
-        "ion-menu-button": ["ion-ripple-effect"],
-        "ion-segment-button": ["ion-ripple-effect"],
-        "ion-tab-button": ["ion-ripple-effect"],
-        "ion-toast": ["ion-ripple-effect"]
+        "ion-action-sheet": [
+          "ion-ripple-effect"
+        ],
+        "ion-alert": [
+          "ion-ripple-effect"
+        ],
+        "ion-back-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-card": [
+          "ion-ripple-effect"
+        ],
+        "ion-chip": [
+          "ion-ripple-effect"
+        ],
+        "ion-datetime": [
+          "ion-ripple-effect"
+        ],
+        "ion-datetime-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-fab-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-item": [
+          "ion-ripple-effect"
+        ],
+        "ion-item-option": [
+          "ion-ripple-effect"
+        ],
+        "ion-menu-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-segment-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-tab-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-toast": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -26134,9 +26393,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["ion-icon"],
+      "dependencies": [
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-searchbar": ["ion-icon"]
+        "ion-searchbar": [
+          "ion-icon"
+        ]
       }
     },
     {
@@ -26981,9 +27244,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-ripple-effect"],
+      "dependencies": [
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-segment-button": ["ion-ripple-effect"]
+        "ion-segment-button": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -28186,10 +28453,22 @@
           "ion-list-header",
           "ion-label"
         ],
-        "ion-item": ["ion-icon", "ion-ripple-effect"],
-        "ion-popover": ["ion-backdrop"],
-        "ion-action-sheet": ["ion-backdrop", "ion-icon", "ion-ripple-effect"],
-        "ion-alert": ["ion-ripple-effect", "ion-backdrop"],
+        "ion-item": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ],
+        "ion-popover": [
+          "ion-backdrop"
+        ],
+        "ion-action-sheet": [
+          "ion-backdrop",
+          "ion-icon",
+          "ion-ripple-effect"
+        ],
+        "ion-alert": [
+          "ion-ripple-effect",
+          "ion-backdrop"
+        ],
         "ion-select-modal": [
           "ion-radio-group",
           "ion-item",
@@ -28203,8 +28482,12 @@
           "ion-content",
           "ion-list"
         ],
-        "ion-button": ["ion-ripple-effect"],
-        "ion-modal": ["ion-backdrop"]
+        "ion-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-modal": [
+          "ion-backdrop"
+        ]
       }
     },
     {
@@ -28297,7 +28580,9 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select"],
+      "dependents": [
+        "ion-select"
+      ],
       "dependencies": [
         "ion-radio-group",
         "ion-item",
@@ -28325,9 +28610,16 @@
           "ion-content",
           "ion-list"
         ],
-        "ion-item": ["ion-icon", "ion-ripple-effect"],
-        "ion-button": ["ion-ripple-effect"],
-        "ion-select": ["ion-select-modal"]
+        "ion-item": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ],
+        "ion-button": [
+          "ion-ripple-effect"
+        ],
+        "ion-select": [
+          "ion-select-modal"
+        ]
       }
     },
     {
@@ -28652,9 +28944,15 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-infinite-scroll-content": ["ion-spinner"],
-        "ion-loading": ["ion-spinner"],
-        "ion-refresher-content": ["ion-spinner"]
+        "ion-infinite-scroll-content": [
+          "ion-spinner"
+        ],
+        "ion-loading": [
+          "ion-spinner"
+        ],
+        "ion-refresher-content": [
+          "ion-spinner"
+        ]
       }
     },
     {
@@ -29513,9 +29811,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-ripple-effect"],
+      "dependencies": [
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-tab-button": ["ion-ripple-effect"]
+        "ion-tab-button": [
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -31159,10 +31461,14 @@
       ],
       "slots": [],
       "parts": [],
-      "dependents": ["ion-select-modal"],
+      "dependents": [
+        "ion-select-modal"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-title"]
+        "ion-select-modal": [
+          "ion-title"
+        ]
       }
     },
     {
@@ -32300,9 +32606,15 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon", "ion-ripple-effect"],
+      "dependencies": [
+        "ion-icon",
+        "ion-ripple-effect"
+      ],
       "dependencyGraph": {
-        "ion-toast": ["ion-icon", "ion-ripple-effect"]
+        "ion-toast": [
+          "ion-icon",
+          "ion-ripple-effect"
+        ]
       }
     },
     {
@@ -32951,9 +33263,13 @@
         }
       ],
       "dependents": [],
-      "dependencies": ["ion-icon"],
+      "dependencies": [
+        "ion-icon"
+      ],
       "dependencyGraph": {
-        "ion-toggle": ["ion-icon"]
+        "ion-toggle": [
+          "ion-icon"
+        ]
       }
     },
     {
@@ -33268,10 +33584,14 @@
           "docs": "The container for the default slot, wrapping content provided without a named slot."
         }
       ],
-      "dependents": ["ion-select-modal"],
+      "dependents": [
+        "ion-select-modal"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "ion-select-modal": ["ion-toolbar"]
+        "ion-select-modal": [
+          "ion-toolbar"
+        ]
       }
     }
   ],

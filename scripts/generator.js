@@ -154,7 +154,7 @@ export function testUserAgent(win: Window, expr: RegExp);
       const tagAsPascal = toPascalCase(component.tag);
 
       // pre-amble of this tag
-      console.log("Processing ", component.tag, toPascalCase(component.tag));
+      // console.log("Processing ", component.tag, toPascalCase(component.tag));
       componentDeclarations =
         componentDeclarations +
         `'${component.tag}': ${tagAsPascal} & HTMLBaseAttributes; \n`;
@@ -244,12 +244,106 @@ export function testUserAgent(win: Window, expr: RegExp);
   // all code imports
   fs.writeFile(`../components/all.js`, allImportsCode, function (err) {
     if (err) return console.log(err);
-  });
 
-  console.log("Writing to index.d.ts and components/*.js files");
-  console.log(
-    "Do us a favor - open index.d.ts and pretty save it in your editor!"
-  );
+    console.log("Writing to index.d.ts and components/*.js files");
+    console.log(
+      "Do us a favor - open index.d.ts and pretty save it in your editor!"
+    );
+
+    // Add a slight delay to ensure all file operations complete
+    setTimeout(() => {
+      console.log("All operations completed. Exiting.");
+      process.exit(0);
+    }, 100);
+  });
 };
 
-doStuff();
+function doHTTPstuff() {
+  const url = "https://unpkg.com/@ionic/docs/core.json";
+
+  import("https")
+    .then((httpsModule) => {
+      const https = httpsModule.default;
+
+      console.log(`Fetching ${url}`);
+      https
+        .get(url, (res) => {
+          if (
+            res.statusCode >= 300 &&
+            res.statusCode < 400 &&
+            res.headers.location
+          ) {
+            // Redirect detected
+            const redirectUrl = new URL(
+              res.headers.location,
+              "https://unpkg.com"
+            ).href;
+            console.log(`Redirected to: ${redirectUrl}`);
+
+            // Follow the redirect
+            https
+              .get(redirectUrl, (redirectRes) => {
+                let data = "";
+
+                redirectRes.on("data", (chunk) => {
+                  data += chunk;
+                });
+
+                redirectRes.on("end", () => {
+                  try {
+                    const jsonData = JSON.parse(data);
+                    console.log("JSON data received:");
+                    console.log(
+                      JSON.stringify(jsonData, null, 2).substring(0, 80) + "..."
+                    );
+                    console.log(`Total length: ${data.length} characters`);
+
+                    // Optionally write to file
+                    fs.writeFileSync("./core.json", data);
+                    console.log("Data saved to core.json file");
+                    doStuff(); // Add this line to call doStuff() after the redirect path completes
+                  } catch (error) {
+                    console.error("Error parsing JSON:", error);
+                  }
+                });
+              })
+              .on("error", (err) => {
+                console.error(`Error following redirect: ${err.message}`);
+              });
+          } else {
+            // No redirect, process the response directly
+            let data = "";
+
+            res.on("data", (chunk) => {
+              data += chunk;
+            });
+
+            res.on("end", () => {
+              try {
+                const jsonData = JSON.parse(data);
+                console.log("JSON data received:");
+                console.log(
+                  JSON.stringify(jsonData, null, 2).substring(0, 500) + "..."
+                );
+                console.log(`Total length: ${data.length} characters`);
+
+                // Optionally write to file
+                fs.writeFileSync("./core.json", data);
+                console.log("Data saved to core.json file");
+                doStuff();
+              } catch (error) {
+                console.error("Error parsing JSON:", error);
+              }
+            });
+          }
+        })
+        .on("error", (err) => {
+          console.error(`Error making request: ${err.message}`);
+        });
+    })
+    .catch((err) => {
+      console.error("Error importing https module:", err);
+    });
+}
+
+doHTTPstuff();
