@@ -1,3 +1,7 @@
+<h1> BIG OVERHAUL ONGOING </h1>
+The repo is undergoing big overhaul into separate repos under the ionic-svelte organisation.
+Some things might break because of this
+
 <h1 align="center"> Ionic SvelteKit </h1> <br>
 <p align="center">
   <a href="https://ionic-svelte.firebaseapp.com">
