@@ -1,4 +1,4 @@
-<h1> NO MORE MAINTENANCE (Nov 2025</h1>
+<h1> NO MORE MAINTENANCE (Nov 2025)</h1>
 The repo is no longer actively maintained.
 
 <h1 align="center"> Ionic SvelteKit </h1> <br>
