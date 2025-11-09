@@ -1,6 +1,5 @@
-<h1> BIG OVERHAUL ONGOING  (March, 30 - 2025)</h1>
-The repo is undergoing big overhaul into separate repos under the ionic-svelte organisation.
-Some things might break because of this
+<h1> NO MORE MAINTENANCE (Nov 2025</h1>
+The repo is no longer actively maintained.
 
 <h1 align="center"> Ionic SvelteKit </h1> <br>
 <p align="center">
