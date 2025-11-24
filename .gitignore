@@ -16,3 +16,4 @@ node_modules
 firebase.json 
 package-lock.json
 
+core
